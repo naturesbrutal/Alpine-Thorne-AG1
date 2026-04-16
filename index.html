@@ -497,21 +497,17 @@
       max-width: 420px; line-height: 1.65; margin-top: 10px;
     }
     .carousel-track-wrap {
-      overflow: hidden;
+      overflow-x: scroll;
       padding: 4px 0 28px;
+      scrollbar-width: none;
+      cursor: grab;
     }
+    .carousel-track-wrap:active { cursor: grabbing; }
+    .carousel-track-wrap::-webkit-scrollbar { display: none; }
     .carousel-track {
       display: flex;
       gap: 16px;
       width: max-content;
-      animation: carousel-scroll 70s linear infinite;
-      will-change: transform;
-    }
-    .carousel-track-wrap:hover .carousel-track {
-      animation-play-state: paused;
-    }
-    @keyframes carousel-scroll {
-      to { transform: translateX(-50%); }
     }
 
     /* ── Card — exact AG1 structure ── */
@@ -800,9 +796,9 @@
       </div>
 
       <!-- 9. Magnesium -->
-      <div class="ic ic-theme-ocean">
+      <div class="ic">
+        <img class="ic-img" src="ingredients/magnesium.png" alt="Magnesium">
         <div class="ic-overlay"></div>
-        <div class="ic-emoji">💎</div>
         <div class="ic-top"><span class="ic-label">Magnesium</span></div>
         <div class="ic-bottom">
           <div class="ic-category">Deep Recovery</div>
@@ -904,11 +900,70 @@
 
 <script>
   (function() {
+    const wrap  = document.getElementById('carousel-track-wrap');
     const track = document.getElementById('carousel-track');
-    // Clone all cards so the loop is seamless
-    [...track.children].forEach(card => {
-      track.appendChild(card.cloneNode(true));
+
+    // Clone cards for seamless infinite loop
+    [...track.children].forEach(card => track.appendChild(card.cloneNode(true)));
+
+    const SPEED = 1.2; // px per frame (~72px/s at 60fps)
+    let isDragging = false;
+    let dragStartX  = 0;
+    let dragScrollStart = 0;
+
+    function halfWidth() { return track.scrollWidth / 2; }
+
+    // Wrap scrollLeft so it stays in [0, halfWidth)
+    function normalise() {
+      const hw = halfWidth();
+      if (wrap.scrollLeft >= hw) wrap.scrollLeft -= hw;
+      if (wrap.scrollLeft <  0)  wrap.scrollLeft += hw;
+    }
+
+    // Auto-scroll loop
+    (function tick() {
+      if (!isDragging) {
+        wrap.scrollLeft += SPEED;
+        normalise();
+      }
+      requestAnimationFrame(tick);
+    })();
+
+    // ── Mouse drag ──────────────────────────────────────
+    wrap.addEventListener('mousedown', e => {
+      isDragging    = true;
+      dragStartX    = e.pageX;
+      dragScrollStart = wrap.scrollLeft;
+      wrap.style.cursor = 'grabbing';
     });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+      wrap.style.cursor = 'grab';
+    });
+
+    wrap.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      e.preventDefault();
+      wrap.scrollLeft = dragScrollStart - (e.pageX - dragStartX);
+      normalise();
+    });
+
+    // ── Touch drag ──────────────────────────────────────
+    wrap.addEventListener('touchstart', e => {
+      isDragging      = true;
+      dragStartX      = e.touches[0].pageX;
+      dragScrollStart = wrap.scrollLeft;
+    }, { passive: true });
+
+    window.addEventListener('touchend',    () => { isDragging = false; });
+    window.addEventListener('touchcancel', () => { isDragging = false; });
+
+    wrap.addEventListener('touchmove', e => {
+      if (!isDragging) return;
+      wrap.scrollLeft = dragScrollStart - (e.touches[0].pageX - dragStartX);
+      normalise();
+    }, { passive: true });
   })();
 </script>
 
