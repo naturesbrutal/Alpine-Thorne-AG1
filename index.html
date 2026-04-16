@@ -496,40 +496,22 @@
       font-size: 16px; color: var(--glacier);
       max-width: 420px; line-height: 1.65; margin-top: 10px;
     }
-    .carousel-nav-btns {
-      display: flex; gap: 10px; flex-shrink: 0; padding-top: 10px;
-    }
-    /* Arrow buttons — translucent white circles, matching reference */
-    .carousel-btn {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: rgba(255,255,255,.08);
-      border: 1.5px solid rgba(255,255,255,.22);
-      color: rgba(255,255,255,.85);
-      font-size: 16px; line-height: 1;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background .18s, border-color .18s, color .18s;
-      user-select: none;
-    }
-    .carousel-btn:hover {
-      background: rgba(255,255,255,.18);
-      border-color: rgba(255,255,255,.5);
-      color: #fff;
-    }
     .carousel-track-wrap {
-      overflow-x: auto;
-      padding: 4px 48px 28px;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      cursor: grab;
+      overflow: hidden;
+      padding: 4px 0 28px;
     }
-    .carousel-track-wrap:active { cursor: grabbing; }
-    .carousel-track-wrap::-webkit-scrollbar { display: none; }
     .carousel-track {
       display: flex;
       gap: 16px;
       width: max-content;
+      animation: carousel-scroll 70s linear infinite;
+      will-change: transform;
+    }
+    .carousel-track-wrap:hover .carousel-track {
+      animation-play-state: paused;
+    }
+    @keyframes carousel-scroll {
+      to { transform: translateX(-50%); }
     }
 
     /* ── Card — exact AG1 structure ── */
@@ -723,10 +705,6 @@
       <div class="eyebrow">What's Inside</div>
       <h2>17 Ingredients in <em>1 Powerful Formula</em></h2>
       <p>Every compound clinically dosed. Every mechanism targeted. Scroll to explore what makes Alpine Reset different.</p>
-    </div>
-    <div class="carousel-nav-btns">
-      <button class="carousel-btn" id="carousel-prev" aria-label="Previous">&#8592;</button>
-      <button class="carousel-btn" id="carousel-next" aria-label="Next">&#8594;</button>
     </div>
   </div>
 
@@ -926,28 +904,10 @@
 
 <script>
   (function() {
-    const wrap = document.getElementById('carousel-track-wrap');
-    const SCROLL_BY = 376;
-    document.getElementById('carousel-prev').addEventListener('click', () => {
-      wrap.scrollBy({ left: -SCROLL_BY, behavior: 'smooth' });
-    });
-    document.getElementById('carousel-next').addEventListener('click', () => {
-      wrap.scrollBy({ left: SCROLL_BY, behavior: 'smooth' });
-    });
-    // Drag to scroll
-    let isDown = false, startX, scrollLeft;
-    wrap.addEventListener('mousedown', e => {
-      isDown = true; wrap.style.cursor = 'grabbing';
-      startX = e.pageX - wrap.offsetLeft;
-      scrollLeft = wrap.scrollLeft;
-    });
-    wrap.addEventListener('mouseleave', () => { isDown = false; wrap.style.cursor = 'grab'; });
-    wrap.addEventListener('mouseup', () => { isDown = false; wrap.style.cursor = 'grab'; });
-    wrap.addEventListener('mousemove', e => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - wrap.offsetLeft;
-      wrap.scrollLeft = scrollLeft - (x - startX) * 1.5;
+    const track = document.getElementById('carousel-track');
+    // Clone all cards so the loop is seamless
+    [...track.children].forEach(card => {
+      track.appendChild(card.cloneNode(true));
     });
   })();
 </script>
