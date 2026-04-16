@@ -472,18 +472,18 @@
 
     /* ── INGREDIENT CAROUSEL ────────────────────────────── */
     .carousel-section {
-      background: var(--deep-navy);
-      padding: 100px 0 100px;
+      background: #0A1628;
+      padding: 96px 0 80px;
       overflow: hidden;
     }
     .carousel-header-row {
-      max-width: 1200px;
-      margin: 0 auto 48px;
-      padding: 0 40px;
+      max-width: 1280px;
+      margin: 0 auto 44px;
+      padding: 0 48px;
       display: flex;
-      align-items: flex-end;
+      align-items: flex-start;
       justify-content: space-between;
-      gap: 24px;
+      gap: 32px;
       flex-wrap: wrap;
     }
     .carousel-header-row .eyebrow { color: var(--ice-blue); }
@@ -495,23 +495,31 @@
     .carousel-header-row h2 em { font-style: normal; color: var(--alpine-blue); }
     .carousel-header-row p {
       font-size: 16px; color: var(--glacier);
-      max-width: 440px; line-height: 1.65; margin-top: 10px;
+      max-width: 420px; line-height: 1.65; margin-top: 10px;
     }
     .carousel-nav-btns {
-      display: flex; gap: 12px; flex-shrink: 0;
+      display: flex; gap: 10px; flex-shrink: 0; padding-top: 10px;
     }
+    /* Arrow buttons — translucent white circles, matching reference */
     .carousel-btn {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: var(--midnight); border: 1px solid var(--steel-blue);
-      color: #fff; font-size: 20px; cursor: pointer;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,.08);
+      border: 1.5px solid rgba(255,255,255,.22);
+      color: rgba(255,255,255,.85);
+      font-size: 16px; line-height: 1;
+      cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      transition: background .2s, border-color .2s;
+      transition: background .18s, border-color .18s, color .18s;
       user-select: none;
     }
-    .carousel-btn:hover { background: var(--alpine-blue); border-color: var(--alpine-blue); }
+    .carousel-btn:hover {
+      background: rgba(255,255,255,.18);
+      border-color: rgba(255,255,255,.5);
+      color: #fff;
+    }
     .carousel-track-wrap {
       overflow-x: auto;
-      padding: 8px 40px 32px;
+      padding: 4px 48px 28px;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
@@ -521,101 +529,112 @@
     .carousel-track-wrap::-webkit-scrollbar { display: none; }
     .carousel-track {
       display: flex;
-      gap: 18px;
+      gap: 14px;
       width: max-content;
     }
-    /* Individual ingredient card */
+
+    /* ── Card ── */
     .ic {
-      width: 272px;
-      height: 420px;
-      border-radius: 20px;
+      width: 300px;
+      height: 440px;
+      border-radius: 16px;
       overflow: hidden;
       position: relative;
       flex-shrink: 0;
       scroll-snap-align: start;
       cursor: default;
-      transition: transform .25s ease;
+      /* Base bg = section bg so gradient blends seamlessly */
+      background: #0A1628;
+      transition: transform .3s ease;
     }
-    .ic:hover { transform: translateY(-6px); }
-    /* Card background (used for cards with no image) */
+    .ic:hover { transform: scale(1.025); }
+
+    /* No-image card background layer */
     .ic-bg {
       position: absolute; inset: 0;
       display: flex; align-items: center; justify-content: center;
     }
-    /* Cards with a real photo */
+
+    /* Real photo — full bleed */
     .ic-img {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
       object-fit: cover;
       object-position: center;
     }
-    /* Bottom gradient overlay */
+
+    /* Bottom gradient — fades TO section bg color (#0A1628) for seamless blend */
     .ic::after {
       content: '';
       position: absolute; inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(0,0,0,.04) 0%,
-        rgba(0,0,0,.08) 35%,
-        rgba(0,0,0,.65) 62%,
-        rgba(0,0,0,.92) 100%
+        transparent            0%,
+        transparent           28%,
+        rgba(10,22,40, .50)   50%,
+        rgba(10,22,40, .85)   68%,
+        rgba(10,22,40, 1.00)  85%
       );
       pointer-events: none;
     }
-    /* Ingredient label at the top */
+
+    /* Ingredient name — top-left, plain text (no pill) matching reference */
     .ic-label {
-      position: absolute; top: 18px; left: 18px;
-      font-size: 10px; font-weight: 700;
-      letter-spacing: .14em; text-transform: uppercase;
-      color: rgba(255,255,255,.75);
-      z-index: 2;
-      background: rgba(0,0,0,.28);
-      padding: 4px 10px; border-radius: 100px;
-      backdrop-filter: blur(4px);
+      position: absolute; top: 16px; left: 16px;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: .13em; text-transform: uppercase;
+      color: rgba(255,255,255,.62);
+      z-index: 2; line-height: 1;
     }
-    /* Dose badge top-right */
+
+    /* Dose — top-right plain text (Alpine-specific; no pill to match reference tone) */
     .ic-dose {
-      position: absolute; top: 18px; right: 18px;
-      font-size: 11px; font-weight: 800;
-      color: var(--ice-blue);
-      background: rgba(59,158,255,.18);
-      border: 1px solid rgba(59,158,255,.4);
-      padding: 4px 10px; border-radius: 100px;
-      z-index: 2;
-      backdrop-filter: blur(4px);
+      position: absolute; top: 16px; right: 16px;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+      z-index: 2; line-height: 1;
     }
-    /* Bottom text content */
+
+    /* Bottom text */
     .ic-content {
       position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 20px 20px 22px;
+      padding: 18px 18px 22px;
       z-index: 2;
     }
+    /* Large bold heading — matches reference scale */
     .ic-category {
-      font-size: 22px; font-weight: 800;
-      color: #fff; line-height: 1.2;
-      letter-spacing: -.01em;
-      margin-bottom: 8px;
+      font-size: 26px; font-weight: 800;
+      color: #fff; line-height: 1.15;
+      letter-spacing: -.02em; margin-bottom: 7px;
     }
+    /* Small supporting description */
     .ic-desc {
-      font-size: 13px; color: rgba(255,255,255,.78);
+      font-size: 13px; color: rgba(255,255,255,.62);
       line-height: 1.55;
     }
-    /* Fallback visual for cards without photos */
+
+    /* Emoji visual for no-image cards — centered, pushed toward top half */
     .ic-emoji {
-      font-size: 100px;
-      line-height: 1;
-      opacity: .85;
-      filter: drop-shadow(0 8px 24px rgba(0,0,0,.4));
-      margin-top: 20px;
+      font-size: 88px; line-height: 1;
+      opacity: .65;
+      filter: drop-shadow(0 12px 32px rgba(0,0,0,.7));
+      margin-bottom: 72px; /* leave bottom half for overlay */
+      position: relative; z-index: 1;
     }
-    /* Color themes for no-image cards */
-    .ic-theme-amber  { background: linear-gradient(145deg, #2D1F0A 0%, #5C3A0F 60%, #8B5A1A 100%); }
-    .ic-theme-sage   { background: linear-gradient(145deg, #0D2010 0%, #1A3D20 60%, #2D5E35 100%); }
-    .ic-theme-purple { background: linear-gradient(145deg, #150D2A 0%, #2D1A55 60%, #4A2D8A 100%); }
-    .ic-theme-ocean  { background: linear-gradient(145deg, #05121F 0%, #0A2540 60%, #0F3D6B 100%); }
-    .ic-theme-silver { background: linear-gradient(145deg, #111828 0%, #1E2D40 60%, #2D4060 100%); }
-    .ic-theme-gold   { background: linear-gradient(145deg, #1A1200 0%, #3D2D00 60%, #6B5000 100%); }
-    .ic-theme-rose   { background: linear-gradient(145deg, #1A0A10 0%, #3D1020 60%, #6B1A35 100%); }
+
+    /*
+      No-image card color themes:
+      Each gradient starts with its accent color at top and
+      ALWAYS ends at the section bg (#0A1628) so the bottom
+      overlay blends seamlessly — identical to reference behavior.
+    */
+    .ic-theme-amber { background: linear-gradient(170deg,#251508 0%,#3A220E 45%,#0A1628 100%); }
+    .ic-theme-sage  { background: linear-gradient(170deg,#0A1A0C 0%,#0F2812 45%,#0A1628 100%); }
+    .ic-theme-steel { background: linear-gradient(170deg,#0C1828 0%,#152236 45%,#0A1628 100%); }
+    .ic-theme-ocean { background: linear-gradient(170deg,#040F1E 0%,#081828 45%,#0A1628 100%); }
+    .ic-theme-gold  { background: linear-gradient(170deg,#181100 0%,#22180A 45%,#0A1628 100%); }
+    .ic-theme-plum  { background: linear-gradient(170deg,#120A1E 0%,#1C1030 45%,#0A1628 100%); }
     /* ── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 1024px) {
       .problem-grid { grid-template-columns: repeat(2, 1fr); }
@@ -779,7 +798,7 @@
 
       <!-- 4. NAC -->
       <div class="ic">
-        <div class="ic-bg ic-theme-silver">
+        <div class="ic-bg ic-theme-steel">
           <div class="ic-emoji">⚗️</div>
         </div>
         <div class="ic-label">N-Acetyl Cysteine</div>
@@ -825,7 +844,7 @@
 
       <!-- 8. L-Theanine -->
       <div class="ic">
-        <div class="ic-bg ic-theme-sage">
+        <div class="ic-bg ic-theme-plum">
           <div class="ic-emoji">🍃</div>
         </div>
         <div class="ic-label">L-Theanine</div>
@@ -931,9 +950,9 @@
       </div>
 
       <!-- 17. The Formula (product card) -->
-      <div class="ic" style="width:300px">
-        <div class="ic-bg" style="background: linear-gradient(145deg, var(--midnight) 0%, var(--deep-navy) 100%); align-items: center; justify-content: center;">
-          <img src="alpine-mockup.png" alt="Alpine Reset" style="width:200px; object-fit:contain; margin-top: 24px; filter: drop-shadow(0 12px 32px rgba(0,0,0,.5)); position:relative; z-index:1;">
+      <div class="ic">
+        <div class="ic-bg ic-theme-ocean" style="flex-direction:column;">
+          <img src="alpine-mockup.png" alt="Alpine Reset" style="width:210px; object-fit:contain; filter: drop-shadow(0 16px 40px rgba(0,0,0,.7)); position:relative; z-index:1; margin-bottom:64px;">
         </div>
         <div class="ic-label">Alpine Reset</div>
         <div class="ic-dose">30 Servings</div>
