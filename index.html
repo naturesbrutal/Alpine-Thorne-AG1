@@ -470,6 +470,152 @@
     .footer-legal-links a { font-size: 13px; color: #3D5273; transition: color .2s; }
     .footer-legal-links a:hover { color: var(--glacier); }
 
+    /* ── INGREDIENT CAROUSEL ────────────────────────────── */
+    .carousel-section {
+      background: var(--deep-navy);
+      padding: 100px 0 100px;
+      overflow: hidden;
+    }
+    .carousel-header-row {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+      padding: 0 40px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .carousel-header-row .eyebrow { color: var(--ice-blue); }
+    .carousel-header-row h2 {
+      font-size: 44px; font-weight: 800;
+      line-height: 1.1; letter-spacing: -.025em;
+      color: #fff; margin-bottom: 0;
+    }
+    .carousel-header-row h2 em { font-style: normal; color: var(--alpine-blue); }
+    .carousel-header-row p {
+      font-size: 16px; color: var(--glacier);
+      max-width: 440px; line-height: 1.65; margin-top: 10px;
+    }
+    .carousel-nav-btns {
+      display: flex; gap: 12px; flex-shrink: 0;
+    }
+    .carousel-btn {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--midnight); border: 1px solid var(--steel-blue);
+      color: #fff; font-size: 20px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, border-color .2s;
+      user-select: none;
+    }
+    .carousel-btn:hover { background: var(--alpine-blue); border-color: var(--alpine-blue); }
+    .carousel-track-wrap {
+      overflow-x: auto;
+      padding: 8px 40px 32px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      cursor: grab;
+    }
+    .carousel-track-wrap:active { cursor: grabbing; }
+    .carousel-track-wrap::-webkit-scrollbar { display: none; }
+    .carousel-track {
+      display: flex;
+      gap: 18px;
+      width: max-content;
+    }
+    /* Individual ingredient card */
+    .ic {
+      width: 272px;
+      height: 420px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      cursor: default;
+      transition: transform .25s ease;
+    }
+    .ic:hover { transform: translateY(-6px); }
+    /* Card background (used for cards with no image) */
+    .ic-bg {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    /* Cards with a real photo */
+    .ic-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    /* Bottom gradient overlay */
+    .ic::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,.04) 0%,
+        rgba(0,0,0,.08) 35%,
+        rgba(0,0,0,.65) 62%,
+        rgba(0,0,0,.92) 100%
+      );
+      pointer-events: none;
+    }
+    /* Ingredient label at the top */
+    .ic-label {
+      position: absolute; top: 18px; left: 18px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,255,255,.75);
+      z-index: 2;
+      background: rgba(0,0,0,.28);
+      padding: 4px 10px; border-radius: 100px;
+      backdrop-filter: blur(4px);
+    }
+    /* Dose badge top-right */
+    .ic-dose {
+      position: absolute; top: 18px; right: 18px;
+      font-size: 11px; font-weight: 800;
+      color: var(--ice-blue);
+      background: rgba(59,158,255,.18);
+      border: 1px solid rgba(59,158,255,.4);
+      padding: 4px 10px; border-radius: 100px;
+      z-index: 2;
+      backdrop-filter: blur(4px);
+    }
+    /* Bottom text content */
+    .ic-content {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 20px 20px 22px;
+      z-index: 2;
+    }
+    .ic-category {
+      font-size: 22px; font-weight: 800;
+      color: #fff; line-height: 1.2;
+      letter-spacing: -.01em;
+      margin-bottom: 8px;
+    }
+    .ic-desc {
+      font-size: 13px; color: rgba(255,255,255,.78);
+      line-height: 1.55;
+    }
+    /* Fallback visual for cards without photos */
+    .ic-emoji {
+      font-size: 100px;
+      line-height: 1;
+      opacity: .85;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,.4));
+      margin-top: 20px;
+    }
+    /* Color themes for no-image cards */
+    .ic-theme-amber  { background: linear-gradient(145deg, #2D1F0A 0%, #5C3A0F 60%, #8B5A1A 100%); }
+    .ic-theme-sage   { background: linear-gradient(145deg, #0D2010 0%, #1A3D20 60%, #2D5E35 100%); }
+    .ic-theme-purple { background: linear-gradient(145deg, #150D2A 0%, #2D1A55 60%, #4A2D8A 100%); }
+    .ic-theme-ocean  { background: linear-gradient(145deg, #05121F 0%, #0A2540 60%, #0F3D6B 100%); }
+    .ic-theme-silver { background: linear-gradient(145deg, #111828 0%, #1E2D40 60%, #2D4060 100%); }
+    .ic-theme-gold   { background: linear-gradient(145deg, #1A1200 0%, #3D2D00 60%, #6B5000 100%); }
+    .ic-theme-rose   { background: linear-gradient(145deg, #1A0A10 0%, #3D1020 60%, #6B1A35 100%); }
     /* ── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 1024px) {
       .problem-grid { grid-template-columns: repeat(2, 1fr); }
@@ -576,6 +722,258 @@
     </div>
   </div>
 </section>
+
+<!-- ── INGREDIENT CAROUSEL ───────────────────────────────── -->
+<section class="carousel-section" id="ingredients-carousel">
+  <div class="carousel-header-row">
+    <div>
+      <div class="eyebrow">What's Inside</div>
+      <h2>17 Ingredients in <em>1 Powerful Formula</em></h2>
+      <p>Every compound clinically dosed. Every mechanism targeted. Scroll to explore what makes Alpine Reset different.</p>
+    </div>
+    <div class="carousel-nav-btns">
+      <button class="carousel-btn" id="carousel-prev" aria-label="Previous">&#8592;</button>
+      <button class="carousel-btn" id="carousel-next" aria-label="Next">&#8594;</button>
+    </div>
+  </div>
+
+  <div class="carousel-track-wrap" id="carousel-track-wrap">
+    <div class="carousel-track" id="carousel-track">
+
+      <!-- 1. DHM -->
+      <div class="ic">
+        <div class="ic-bg ic-theme-amber">
+          <div class="ic-emoji">🌿</div>
+        </div>
+        <div class="ic-label">Dihydromyricetin</div>
+        <div class="ic-dose">1,200mg</div>
+        <div class="ic-content">
+          <div class="ic-category">Alcohol Clearance</div>
+          <div class="ic-desc">Accelerates acetaldehyde metabolism — neutralizing the toxic byproduct responsible for your worst hangover symptoms.</div>
+        </div>
+      </div>
+
+      <!-- 2. Prickly Pear -->
+      <div class="ic">
+        <img class="ic-img" src="ingredients/prickly-pear.jpg" alt="Prickly Pear">
+        <div class="ic-label">Prickly Pear Extract</div>
+        <div class="ic-dose">1,400mg</div>
+        <div class="ic-content">
+          <div class="ic-category">Inflammation Relief</div>
+          <div class="ic-desc">Clinically shown to reduce nausea, dry mouth, and loss of appetite — the morning-after antidote your body needs.</div>
+        </div>
+      </div>
+
+      <!-- 3. Milk Thistle -->
+      <div class="ic">
+        <div class="ic-bg ic-theme-sage">
+          <div class="ic-emoji">🌸</div>
+        </div>
+        <div class="ic-label">Milk Thistle Extract</div>
+        <div class="ic-dose">700mg</div>
+        <div class="ic-content">
+          <div class="ic-category">Liver Protection</div>
+          <div class="ic-desc">80% silymarin standardized extract — shields liver cells from oxidative damage and accelerates cellular repair.</div>
+        </div>
+      </div>
+
+      <!-- 4. NAC -->
+      <div class="ic">
+        <div class="ic-bg ic-theme-silver">
+          <div class="ic-emoji">⚗️</div>
+        </div>
+        <div class="ic-label">N-Acetyl Cysteine</div>
+        <div class="ic-dose">600mg</div>
+        <div class="ic-content">
+          <div class="ic-category">Glutathione Synthesis</div>
+          <div class="ic-desc">Direct precursor to glutathione — your liver's master antioxidant, severely depleted by alcohol metabolism.</div>
+        </div>
+      </div>
+
+      <!-- 5. Taurine -->
+      <div class="ic">
+        <img class="ic-img" src="ingredients/taurine.jpg" alt="Taurine">
+        <div class="ic-label">Taurine</div>
+        <div class="ic-dose">750mg</div>
+        <div class="ic-content">
+          <div class="ic-category">Cellular Protection</div>
+          <div class="ic-desc">Reduces oxidative liver damage, supports bile acid conjugation, and restores intracellular electrolyte balance.</div>
+        </div>
+      </div>
+
+      <!-- 6. L-Carnitine -->
+      <div class="ic">
+        <img class="ic-img" src="ingredients/l-carnitine.jpg" alt="L-Carnitine">
+        <div class="ic-label">L-Carnitine</div>
+        <div class="ic-dose">~680mg</div>
+        <div class="ic-content">
+          <div class="ic-category">Energy Recovery</div>
+          <div class="ic-desc">Shuttles fatty acids into mitochondria for ATP production — rebuilding the cellular energy alcohol tears down.</div>
+        </div>
+      </div>
+
+      <!-- 7. R-ALA -->
+      <div class="ic">
+        <img class="ic-img" src="ingredients/r-ala.webp" alt="R-Alpha Lipoic Acid">
+        <div class="ic-label">R-Alpha Lipoic Acid</div>
+        <div class="ic-dose">300mg</div>
+        <div class="ic-content">
+          <div class="ic-category">Antioxidant Power</div>
+          <div class="ic-desc">Recycles vitamins C &amp; E and boosts glutathione — a dual-action antioxidant that works in both fat and water-soluble environments.</div>
+        </div>
+      </div>
+
+      <!-- 8. L-Theanine -->
+      <div class="ic">
+        <div class="ic-bg ic-theme-sage">
+          <div class="ic-emoji">🍃</div>
+        </div>
+        <div class="ic-label">L-Theanine</div>
+        <div class="ic-dose">200mg</div>
+        <div class="ic-content">
+          <div class="ic-category">Mental Clarity</div>
+          <div class="ic-desc">Promotes calm, focused alertness — smoothing out the anxiety and mental fog that follows a night of drinking.</div>
+        </div>
+      </div>
+
+      <!-- 9. Magnesium -->
+      <div class="ic">
+        <div class="ic-bg ic-theme-ocean">
+          <div class="ic-emoji">💎</div>
+        </div>
+        <div class="ic-label">Magnesium</div>
+        <div class="ic-dose">200mg</div>
+        <div class="ic-content">
+          <div class="ic-category">Deep Recovery</div>
+          <div class="ic-desc">Alcohol's diuretic effect strips magnesium rapidly — critical for muscle relaxation, quality sleep, and mood stability.</div>
+        </div>
+      </div>
+
+      <!-- 10. Niacinamide -->
+      <div class="ic">
+        <img class="ic-img" src="ingredients/niacinamide.webp" alt="Niacinamide">
+        <div class="ic-label">Niacinamide (B3)</div>
+        <div class="ic-dose">250mg</div>
+        <div class="ic-content">
+          <div class="ic-category">NAD⁺ Restoration</div>
+          <div class="ic-desc">Directly replenishes NAD⁺ — the coenzyme alcohol metabolism depletes, essential for energy production in every cell.</div>
+        </div>
+      </div>
+
+      <!-- 11. Beta-Alanine -->
+      <div class="ic">
+        <img class="ic-img" src="ingredients/beta-alanine.png" alt="Beta-Alanine">
+        <div class="ic-label">Beta-Alanine</div>
+        <div class="ic-dose">250mg</div>
+        <div class="ic-content">
+          <div class="ic-category">Physical Recovery</div>
+          <div class="ic-desc">Boosts muscle carnosine to buffer lactic acid, reduce soreness, and restore physical resilience after a long night.</div>
+        </div>
+      </div>
+
+      <!-- 12. CoQ10 -->
+      <div class="ic">
+        <img class="ic-img" src="ingredients/coq10.webp" alt="CoQ10">
+        <div class="ic-label">Coenzyme Q10</div>
+        <div class="ic-dose">100mg</div>
+        <div class="ic-content">
+          <div class="ic-category">Mitochondrial Power</div>
+          <div class="ic-desc">Powers the electron transport chain — restoring ATP production in the mitochondria that alcohol disrupts at its core.</div>
+        </div>
+      </div>
+
+      <!-- 13. Astaxanthin -->
+      <div class="ic">
+        <img class="ic-img" src="ingredients/astaxanthin.webp" alt="Astaxanthin">
+        <div class="ic-label">Astaxanthin</div>
+        <div class="ic-dose">6mg</div>
+        <div class="ic-content">
+          <div class="ic-category">Free Radical Defense</div>
+          <div class="ic-desc">6,000× stronger than vitamin C at neutralizing free radicals — nature's most potent antioxidant for total cellular protection.</div>
+        </div>
+      </div>
+
+      <!-- 14. Copper -->
+      <div class="ic">
+        <img class="ic-img" src="ingredients/copper.webp" alt="Copper">
+        <div class="ic-label">Copper</div>
+        <div class="ic-dose">1mg</div>
+        <div class="ic-content">
+          <div class="ic-category">Enzymatic Support</div>
+          <div class="ic-desc">Balances zinc absorption and activates superoxide dismutase — a critical antioxidant enzyme in liver defense and immune function.</div>
+        </div>
+      </div>
+
+      <!-- 15. B Vitamins -->
+      <div class="ic">
+        <div class="ic-bg ic-theme-gold">
+          <div class="ic-emoji">✨</div>
+        </div>
+        <div class="ic-label">B Vitamin Complex</div>
+        <div class="ic-dose">Full Complex</div>
+        <div class="ic-content">
+          <div class="ic-category">Energy Metabolism</div>
+          <div class="ic-desc">B1, B2, B5, B6, B12 in bioavailable forms — fully restoring the coenzymes alcohol strips and your nervous system runs on.</div>
+        </div>
+      </div>
+
+      <!-- 16. Electrolytes -->
+      <div class="ic">
+        <div class="ic-bg ic-theme-ocean">
+          <div class="ic-emoji">💧</div>
+        </div>
+        <div class="ic-label">Electrolyte Complex</div>
+        <div class="ic-dose">3× Formula</div>
+        <div class="ic-content">
+          <div class="ic-category">Rapid Hydration</div>
+          <div class="ic-desc">Sodium, potassium, and chloride at 3× leading sports drink concentration — restoring fluid balance from the inside out.</div>
+        </div>
+      </div>
+
+      <!-- 17. The Formula (product card) -->
+      <div class="ic" style="width:300px">
+        <div class="ic-bg" style="background: linear-gradient(145deg, var(--midnight) 0%, var(--deep-navy) 100%); align-items: center; justify-content: center;">
+          <img src="alpine-mockup.png" alt="Alpine Reset" style="width:200px; object-fit:contain; margin-top: 24px; filter: drop-shadow(0 12px 32px rgba(0,0,0,.5)); position:relative; z-index:1;">
+        </div>
+        <div class="ic-label">Alpine Reset</div>
+        <div class="ic-dose">30 Servings</div>
+        <div class="ic-content">
+          <div class="ic-category">The Complete Formula</div>
+          <div class="ic-desc">All 17 ingredients. One scoop. Peach Mango flavor. Take before bed — wake up human.</div>
+        </div>
+      </div>
+
+    </div><!-- /carousel-track -->
+  </div><!-- /carousel-track-wrap -->
+</section>
+
+<script>
+  (function() {
+    const wrap = document.getElementById('carousel-track-wrap');
+    const SCROLL_BY = 290;
+    document.getElementById('carousel-prev').addEventListener('click', () => {
+      wrap.scrollBy({ left: -SCROLL_BY, behavior: 'smooth' });
+    });
+    document.getElementById('carousel-next').addEventListener('click', () => {
+      wrap.scrollBy({ left: SCROLL_BY, behavior: 'smooth' });
+    });
+    // Drag to scroll
+    let isDown = false, startX, scrollLeft;
+    wrap.addEventListener('mousedown', e => {
+      isDown = true; wrap.style.cursor = 'grabbing';
+      startX = e.pageX - wrap.offsetLeft;
+      scrollLeft = wrap.scrollLeft;
+    });
+    wrap.addEventListener('mouseleave', () => { isDown = false; wrap.style.cursor = 'grab'; });
+    wrap.addEventListener('mouseup', () => { isDown = false; wrap.style.cursor = 'grab'; });
+    wrap.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - wrap.offsetLeft;
+      wrap.scrollLeft = scrollLeft - (x - startX) * 1.5;
+    });
+  })();
+</script>
 
 <!-- ── THE PROBLEM ───────────────────────────────────────── -->
 <section class="problem section-pad" id="problem">
