@@ -471,8 +471,9 @@
     .footer-legal-links a:hover { color: var(--glacier); }
 
     /* ── INGREDIENT CAROUSEL ────────────────────────────── */
+    /* AG1 section bg: #0F2E2F (dark teal). rgb(15,46,47) */
     .carousel-section {
-      background: #0A1628;
+      background: #0F2E2F;
       padding: 96px 0 80px;
       overflow: hidden;
     }
@@ -544,7 +545,7 @@
       scroll-snap-align: start;
       cursor: default;
       /* Base bg = section bg so gradient blends seamlessly */
-      background: #0A1628;
+      background: #0F2E2F;
       transition: transform .3s ease;
     }
     .ic:hover { transform: scale(1.025); }
@@ -563,17 +564,22 @@
       object-position: center;
     }
 
-    /* Bottom gradient — fades TO section bg color (#0A1628) for seamless blend */
+    /*
+      Bottom gradient — matches AG1 reference exactly.
+      Key: fades aggressively so image is GONE by 65% height.
+      Bottom 35% of card is pure #0F2E2F — text sits on solid color.
+      rgb(15,46,47) = #0F2E2F
+    */
     .ic::after {
       content: '';
       position: absolute; inset: 0;
       background: linear-gradient(
         to bottom,
-        transparent            0%,
-        transparent           28%,
-        rgba(10,22,40, .50)   50%,
-        rgba(10,22,40, .85)   68%,
-        rgba(10,22,40, 1.00)  85%
+        transparent             0%,
+        transparent            30%,
+        rgba(15,46,47, 0.72)   50%,
+        rgba(15,46,47, 0.97)   62%,
+        rgba(15,46,47, 1.00)   65%
       );
       pointer-events: none;
     }
@@ -624,17 +630,16 @@
     }
 
     /*
-      No-image card color themes:
-      Each gradient starts with its accent color at top and
-      ALWAYS ends at the section bg (#0A1628) so the bottom
-      overlay blends seamlessly — identical to reference behavior.
+      No-image card themes — accent color at top, always fades to
+      section bg #0F2E2F (AG1 dark teal) so the ::after overlay
+      blends seamlessly into the section background.
     */
-    .ic-theme-amber { background: linear-gradient(170deg,#251508 0%,#3A220E 45%,#0A1628 100%); }
-    .ic-theme-sage  { background: linear-gradient(170deg,#0A1A0C 0%,#0F2812 45%,#0A1628 100%); }
-    .ic-theme-steel { background: linear-gradient(170deg,#0C1828 0%,#152236 45%,#0A1628 100%); }
-    .ic-theme-ocean { background: linear-gradient(170deg,#040F1E 0%,#081828 45%,#0A1628 100%); }
-    .ic-theme-gold  { background: linear-gradient(170deg,#181100 0%,#22180A 45%,#0A1628 100%); }
-    .ic-theme-plum  { background: linear-gradient(170deg,#120A1E 0%,#1C1030 45%,#0A1628 100%); }
+    .ic-theme-amber { background: linear-gradient(175deg,#3A2208 0%,#251508 40%,#0F2E2F 100%); }
+    .ic-theme-sage  { background: linear-gradient(175deg,#143018 0%,#0C2010 40%,#0F2E2F 100%); }
+    .ic-theme-steel { background: linear-gradient(175deg,#152538 0%,#0E1C2C 40%,#0F2E2F 100%); }
+    .ic-theme-ocean { background: linear-gradient(175deg,#082030 0%,#041520 40%,#0F2E2F 100%); }
+    .ic-theme-gold  { background: linear-gradient(175deg,#2C1C00 0%,#1C1000 40%,#0F2E2F 100%); }
+    .ic-theme-plum  { background: linear-gradient(175deg,#1E0E30 0%,#140820 40%,#0F2E2F 100%); }
     /* ── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 1024px) {
       .problem-grid { grid-template-columns: repeat(2, 1fr); }
@@ -951,7 +956,7 @@
 
       <!-- 17. The Formula (product card) -->
       <div class="ic">
-        <div class="ic-bg ic-theme-ocean" style="flex-direction:column;">
+        <div class="ic-bg" style="background: linear-gradient(175deg,#082030 0%,#041520 40%,#0F2E2F 100%); flex-direction:column;">
           <img src="alpine-mockup.png" alt="Alpine Reset" style="width:210px; object-fit:contain; filter: drop-shadow(0 16px 40px rgba(0,0,0,.7)); position:relative; z-index:1; margin-bottom:64px;">
         </div>
         <div class="ic-label">Alpine Reset</div>
