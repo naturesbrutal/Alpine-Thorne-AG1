@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alpine Thorne™ AG1 — Daily Performance Nutrition</title>
+  <style>
+    :root {
+      --alpine-blue:  #3B9EFF;
+      --deep-navy:    #0A1628;
+      --midnight:     #0D1E3A;
+      --steel-blue:   #1E3A5F;
+      --white:        #FFFFFF;
+      --glacier:      #A8C4E0;
+      --ice-blue:     #7BBFFF;
+      --summit:       #1A6CC4;
+      --off-white:    #F5F8FF;
+      --font: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      color: var(--deep-navy);
+      background: #fff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .nav-logo img { height: 26px; width: auto; display: block; }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: #374151;
+      transition: color .2s;
+      letter-spacing: .01em;
+    }
+    .nav-links a:hover { color: var(--alpine-blue); }
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
+    .nav-login {
+      font-size: 14px;
+      font-weight: 500;
+      color: #374151;
+      transition: color .2s;
+    }
+    .nav-login:hover { color: var(--alpine-blue); }
+    .btn-nav {
+      background: var(--deep-navy);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 8px;
+      transition: background .2s;
+      white-space: nowrap;
+    }
+    .btn-nav:hover { background: var(--summit); }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    .hero {
+      background: #ffffff;
+      padding: 90px 40px 80px;
+      min-height: calc(100vh - 64px);
+      display: flex;
+      align-items: center;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #EBF5FF;
+      color: var(--summit);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--alpine-blue);
+    }
+    .hero-h1 {
+      font-size: 60px;
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.025em;
+      color: var(--deep-navy);
+      margin-bottom: 22px;
+    }
+    .hero-h1 em {
+      font-style: normal;
+      color: var(--alpine-blue);
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: #4B5563;
+      line-height: 1.75;
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .btn-primary {
+      background: var(--alpine-blue);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 9px;
+      transition: background .2s, transform .15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--summit); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--deep-navy);
+      font-size: 16px;
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 9px;
+      border: 2px solid #CBD5E1;
+      transition: border-color .2s, color .2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--alpine-blue); color: var(--alpine-blue); }
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .trust-stars { color: #F59E0B; font-size: 18px; letter-spacing: 2px; line-height: 1; }
+    .trust-copy { font-size: 14px; color: #6B7280; }
+    .trust-copy strong { color: var(--deep-navy); font-weight: 700; }
+    .trust-divider { width: 1px; height: 18px; background: #D1D5DB; }
+
+    /* Product visual */
+    .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; }
+    .product-tub {
+      width: 300px;
+      height: 380px;
+      background: linear-gradient(150deg, var(--deep-navy) 0%, var(--midnight) 55%, #1E3A5F 100%);
+      border-radius: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 50px 100px rgba(10,22,40,.35),
+        0 0 0 1px rgba(59,158,255,.2),
+        inset 0 1px 0 rgba(255,255,255,.08);
+      position: relative;
+      overflow: hidden;
+      gap: 14px;
+    }
+    .tub-glow-1 {
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(59,158,255,.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .tub-glow-2 {
+      position: absolute;
+      bottom: -40px;
+      left: -40px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(123,191,255,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .tub-lid {
+      width: 280px;
+      height: 22px;
+      background: linear-gradient(180deg, #2A4A7F 0%, #1E3A5F 100%);
+      border-radius: 12px 12px 0 0;
+      position: absolute;
+      top: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,.3);
+    }
+    .tub-logo {
+      width: 190px;
+      filter: brightness(0) invert(1);
+      position: relative;
+      z-index: 1;
+    }
+    .tub-line {
+      width: 260px;
+      height: 1px;
+      background: rgba(255,255,255,.12);
+      position: relative;
+      z-index: 1;
+    }
+    .tub-sub {
+      color: var(--glacier);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
+    .tub-name {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -.01em;
+      position: relative;
+      z-index: 1;
+    }
+    .tub-serving {
+      background: rgba(59,158,255,.2);
+      border: 1px solid rgba(59,158,255,.4);
+      color: var(--ice-blue);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      position: relative;
+      z-index: 1;
+    }
+    .tub-badge {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      background: var(--alpine-blue);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border-radius: 100px;
+      box-shadow: 0 6px 16px rgba(59,158,255,.5);
+    }
+
+    /* ─── PROOF BAR ───────────────────────────────────────── */
+    .proof-bar {
+      background: var(--off-white);
+      border-top: 1px solid rgba(59,158,255,.12);
+      border-bottom: 1px solid rgba(59,158,255,.12);
+      padding: 36px 40px;
+    }
+    .proof-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 56px;
+      flex-wrap: wrap;
+    }
+    .proof-item { text-align: center; }
+    .proof-num {
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--deep-navy);
+      line-height: 1;
+      letter-spacing: -.02em;
+    }
+    .proof-num span { color: var(--alpine-blue); }
+    .proof-label {
+      font-size: 13px;
+      color: #6B7280;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+    .proof-sep { width: 1px; height: 52px; background: rgba(59,158,255,.2); }
+
+    /* ─── SECTION SHARED ──────────────────────────────────── */
+    .eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .section-h2 {
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -.025em;
+      margin-bottom: 16px;
+    }
+    .section-p {
+      font-size: 17px;
+      line-height: 1.75;
+    }
+    .section-pad { padding: 100px 40px; }
+    .inner { max-width: 1200px; margin: 0 auto; }
+
+    /* ─── FEATURES ────────────────────────────────────────── */
+    .features { background: var(--deep-navy); }
+    .features .eyebrow { color: var(--ice-blue); }
+    .features .section-h2 { color: #fff; }
+    .features .section-p { color: var(--glacier); max-width: 580px; margin-bottom: 64px; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .feat-card {
+      background: var(--midnight);
+      border: 1px solid var(--steel-blue);
+      border-radius: 18px;
+      padding: 32px 24px;
+      transition: border-color .2s, transform .2s;
+    }
+    .feat-card:hover { border-color: var(--alpine-blue); transform: translateY(-5px); }
+    .feat-pct {
+      font-size: 54px;
+      font-weight: 900;
+      color: var(--alpine-blue);
+      line-height: 1;
+      letter-spacing: -.02em;
+      margin-bottom: 12px;
+    }
+    .feat-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .feat-desc { font-size: 14px; color: var(--glacier); line-height: 1.65; }
+
+    /* ─── THE PLAN ────────────────────────────────────────── */
+    .plan { background: #fff; }
+    .plan-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .plan .eyebrow { color: var(--summit); }
+    .plan .section-h2 { color: var(--deep-navy); font-size: 38px; }
+    .plan .section-p { color: #4B5563; max-width: 520px; margin-bottom: 40px; }
+    .benefits { list-style: none; display: flex; flex-direction: column; gap: 22px; }
+    .benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .benefit-icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: #EBF5FF;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+    .benefit-body strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--deep-navy);
+      margin-bottom: 3px;
+    }
+    .benefit-body span { font-size: 14px; color: #6B7280; line-height: 1.6; }
+
+    /* Body diagram */
+    .diagram {
+      background: linear-gradient(160deg, #EBF5FF 0%, #F0F9FF 100%);
+      border: 1px solid rgba(59,158,255,.18);
+      border-radius: 24px;
+      padding: 44px 32px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .diagram-heading {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--summit);
+    }
+    .body-fig {
+      position: relative;
+      width: 70px;
+    }
+    .body-head {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--deep-navy);
+      margin: 0 auto 4px;
+    }
+    .body-torso {
+      width: 70px;
+      height: 130px;
+      background: var(--deep-navy);
+      border-radius: 22px 22px 14px 14px;
+    }
+    .body-legs {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 4px;
+    }
+    .body-leg {
+      width: 28px;
+      height: 80px;
+      background: var(--deep-navy);
+      border-radius: 0 0 10px 10px;
+    }
+    .diagram-tags {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+    }
+    .dtag {
+      background: #fff;
+      border: 1px solid rgba(59,158,255,.25);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .dtag-name { font-size: 13px; font-weight: 700; color: var(--deep-navy); }
+    .dtag-sub { font-size: 11px; color: #9CA3AF; margin-top: 2px; }
+
+    /* ─── INGREDIENTS ─────────────────────────────────────── */
+    .ingredients { background: var(--midnight); }
+    .ingredients .eyebrow { color: var(--ice-blue); }
+    .ingredients .section-h2 { color: #fff; }
+    .ingredients .section-p { color: var(--glacier); max-width: 600px; margin-bottom: 60px; }
+    .ing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .ing-card {
+      background: var(--deep-navy);
+      border: 1px solid var(--steel-blue);
+      border-radius: 18px;
+      padding: 30px 24px;
+      transition: border-color .2s, transform .2s;
+    }
+    .ing-card:hover { border-color: var(--alpine-blue); transform: translateY(-4px); }
+    .ing-num {
+      font-size: 46px;
+      font-weight: 900;
+      color: var(--alpine-blue);
+      line-height: 1;
+      letter-spacing: -.02em;
+      margin-bottom: 10px;
+    }
+    .ing-name { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .ing-desc { font-size: 14px; color: var(--glacier); line-height: 1.65; }
+
+    /* ─── SCIENCE ─────────────────────────────────────────── */
+    .science { background: var(--deep-navy); border-top: 1px solid var(--steel-blue); }
+    .science-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .science .eyebrow { color: var(--ice-blue); }
+    .science .section-h2 { color: #fff; }
+    .science .section-p { color: var(--glacier); font-size: 16px; line-height: 1.8; margin-bottom: 36px; }
+    .sci-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .sci-stat {
+      background: var(--midnight);
+      border: 1px solid var(--steel-blue);
+      border-radius: 14px;
+      padding: 22px 18px;
+    }
+    .sci-stat-num {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--ice-blue);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .sci-stat-label { font-size: 13px; color: var(--glacier); line-height: 1.45; }
+    .sci-visual {
+      background: var(--midnight);
+      border: 1px solid var(--steel-blue);
+      border-radius: 24px;
+      padding: 52px 40px;
+      text-align: center;
+    }
+    .sci-icon { font-size: 56px; margin-bottom: 24px; }
+    .sci-visual h3 { color: #fff; font-size: 22px; font-weight: 700; margin-bottom: 14px; }
+    .sci-visual p { color: var(--glacier); font-size: 15px; line-height: 1.75; }
+    .sci-certs {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .sci-cert {
+      background: rgba(59,158,255,.12);
+      border: 1px solid rgba(59,158,255,.3);
+      color: var(--ice-blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    /* ─── REVIEWS ─────────────────────────────────────────── */
+    .reviews { background: #fff; }
+    .reviews .eyebrow { color: var(--summit); }
+    .reviews .section-h2 { color: var(--deep-navy); margin-bottom: 56px; }
+    .reviews-header-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .reviews-aggregate {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .agg-score {
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--deep-navy);
+      line-height: 1;
+    }
+    .agg-right { display: flex; flex-direction: column; gap: 4px; }
+    .agg-stars { color: #F59E0B; font-size: 22px; letter-spacing: 3px; }
+    .agg-count { font-size: 13px; color: #9CA3AF; }
+    .rev-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .rev-card {
+      background: #F8FAFF;
+      border: 1px solid rgba(59,158,255,.14);
+      border-radius: 18px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .rev-stars { color: #F59E0B; font-size: 15px; letter-spacing: 2px; }
+    .rev-title { font-size: 15px; font-weight: 700; color: var(--deep-navy); }
+    .rev-body { font-size: 14px; color: #4B5563; line-height: 1.7; flex: 1; }
+    .rev-author { display: flex; align-items: center; gap: 12px; }
+    .rev-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--deep-navy);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .rev-name { font-size: 14px; font-weight: 700; color: var(--deep-navy); }
+    .rev-meta { font-size: 12px; color: #9CA3AF; margin-top: 2px; }
+    .rev-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--summit);
+      background: #EBF5FF;
+      padding: 3px 9px;
+      border-radius: 100px;
+      margin-top: 2px;
+    }
+
+    /* ─── CTA ─────────────────────────────────────────────── */
+    .cta-section {
+      background: linear-gradient(140deg, var(--deep-navy) 0%, var(--midnight) 50%, #152B4A 100%);
+      padding: 100px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(59,158,255,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-inner-wrap {
+      max-width: 740px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-section .eyebrow { color: var(--ice-blue); }
+    .cta-section .section-h2 { color: #fff; font-size: 48px; margin-bottom: 18px; }
+    .cta-section .section-p { color: var(--glacier); font-size: 18px; max-width: 560px; margin: 0 auto 52px; }
+    .cta-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 36px;
+      text-align: left;
+    }
+    .cta-card {
+      background: var(--midnight);
+      border: 2px solid var(--steel-blue);
+      border-radius: 18px;
+      padding: 28px 24px;
+      cursor: pointer;
+      transition: border-color .2s, transform .2s;
+    }
+    .cta-card.featured { border-color: var(--alpine-blue); background: rgba(59,158,255,.08); }
+    .cta-card:hover { border-color: var(--alpine-blue); transform: translateY(-3px); }
+    .cta-badge {
+      display: inline-block;
+      background: var(--alpine-blue);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+    }
+    .cta-card-title { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .cta-price { font-size: 30px; font-weight: 900; color: var(--alpine-blue); line-height: 1; }
+    .cta-price sub { font-size: 14px; font-weight: 400; color: var(--glacier); vertical-align: baseline; }
+    .cta-card-desc { font-size: 13px; color: var(--glacier); margin-top: 10px; line-height: 1.55; }
+    .cta-main-btn {
+      display: inline-block;
+      background: var(--alpine-blue);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 18px 52px;
+      border-radius: 10px;
+      transition: background .2s, transform .15s;
+      margin-bottom: 20px;
+    }
+    .cta-main-btn:hover { background: var(--summit); transform: translateY(-2px); }
+    .cta-guarantee { font-size: 14px; color: var(--glacier); display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .cta-guarantee span { display: flex; align-items: center; gap: 6px; }
+    .cta-guarantee span::before { content: '✓'; color: var(--ice-blue); font-weight: 700; }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: #060E1C;
+      padding: 72px 40px 32px;
+      color: var(--glacier);
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 52px;
+      border-bottom: 1px solid var(--steel-blue);
+      margin-bottom: 32px;
+    }
+    .footer-brand-logo {
+      height: 22px;
+      filter: brightness(0) invert(1);
+      margin-bottom: 18px;
+      display: block;
+    }
+    .footer-brand p { font-size: 14px; color: var(--glacier); line-height: 1.75; max-width: 280px; }
+    .footer-col h4 {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 13px; }
+    .footer-col a { font-size: 14px; color: var(--glacier); transition: color .2s; }
+    .footer-col a:hover { color: var(--alpine-blue); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-legal { font-size: 13px; color: #3D5273; }
+    .footer-legal-links { display: flex; gap: 24px; }
+    .footer-legal-links a { font-size: 13px; color: #3D5273; transition: color .2s; }
+    .footer-legal-links a:hover { color: var(--glacier); }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .ing-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-login { display: none; }
+      .nav { padding: 0 20px; }
+      .hero { padding: 60px 20px; min-height: auto; }
+      .hero-inner, .plan-inner, .science-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-h1 { font-size: 38px; }
+      .section-h2 { font-size: 30px; }
+      .cta-section .section-h2 { font-size: 32px; }
+      .features-grid, .ing-grid, .rev-grid, .cta-cards { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .section-pad { padding: 72px 20px; }
+      .proof-bar { padding: 28px 20px; }
+      .proof-bar-inner { gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="brand_assets/Alpine Logo Transparent copy.png" alt="Alpine Thorne">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#what-is">What is Alpine?</a></li>
+      <li><a href="#ingredients">Ingredients</a></li>
+      <li><a href="#science">Science</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#" class="nav-login">Sign In</a>
+      <a href="#get-started" class="btn-nav">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────────────── -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Daily Performance Nutrition</div>
+      <h1 class="hero-h1">
+        True nutrition.<br><em>One scoop.</em><br>Every day.
+      </h1>
+      <p class="hero-sub">
+        Alpine Thorne AG1 delivers 75+ premium bioavailable nutrients — engineered for energy, gut health, immunity, and long-term performance.
+      </p>
+      <div class="hero-btns">
+        <a href="#get-started" class="btn-primary">Subscribe &amp; Save 20%</a>
+        <a href="#get-started" class="btn-outline">One-Time Purchase</a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-stars">★★★★★</span>
+        <p class="trust-copy"><strong>91,000+</strong> satisfied customers</p>
+        <span class="trust-divider"></span>
+        <p class="trust-copy"><strong>60-day</strong> money-back guarantee</p>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="product-tub">
+        <div class="tub-glow-1"></div>
+        <div class="tub-glow-2"></div>
+        <div class="tub-lid"></div>
+        <img class="tub-logo" src="brand_assets/Alpine Logo Transparent copy.png" alt="Alpine">
+        <div class="tub-line"></div>
+        <div class="tub-sub">Daily Performance Formula</div>
+        <div class="tub-name">AG1</div>
+        <div class="tub-serving">30 Servings</div>
+      </div>
+      <div class="tub-badge">New Formula</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROOF BAR ───────────────────────────────────────────── -->
+<section class="proof-bar">
+  <div class="proof-bar-inner">
+    <div class="proof-item">
+      <div class="proof-num"><span>91K+</span></div>
+      <div class="proof-label">Satisfied customers worldwide</div>
+    </div>
+    <div class="proof-sep"></div>
+    <div class="proof-item">
+      <div class="proof-num"><span>4.9</span>★</div>
+      <div class="proof-label">Avg. rating from verified buyers</div>
+    </div>
+    <div class="proof-sep"></div>
+    <div class="proof-item">
+      <div class="proof-num"><span>75+</span></div>
+      <div class="proof-label">Premium bioavailable nutrients</div>
+    </div>
+    <div class="proof-sep"></div>
+    <div class="proof-item">
+      <div class="proof-num"><span>1</span></div>
+      <div class="proof-label">Scoop a day — that's all it takes</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ────────────────────────────────────────────── -->
+<section class="features section-pad" id="what-is">
+  <div class="inner">
+    <div class="eyebrow">Why Alpine AG1</div>
+    <h2 class="section-h2">Designed to support<br>your busy modern life.</h2>
+    <p class="section-p">Every serving is formulated to address the gaps most diets miss — from energy and gut health to immunity and mental clarity.</p>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-pct">75%</div>
+        <div class="feat-title">Report more energy</div>
+        <div class="feat-desc">Users feel a measurable lift in daily energy within the first 30 days of consistent use.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pct">94%</div>
+        <div class="feat-title">Improved gut health</div>
+        <div class="feat-desc">Our prebiotic and probiotic blend supports a thriving microbiome that your whole body benefits from.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pct">88%</div>
+        <div class="feat-title">Stronger immunity</div>
+        <div class="feat-desc">Clinically studied vitamins, minerals, and botanicals strengthen your body's natural defenses.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pct">81%</div>
+        <div class="feat-title">Sharper focus</div>
+        <div class="feat-desc">Adaptogens and nootropics dial in mental clarity and stress resilience when it matters most.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── THE PLAN ────────────────────────────────────────────── -->
+<section class="plan section-pad" id="how">
+  <div class="plan-inner">
+    <div>
+      <div class="eyebrow">The Alpine Plan</div>
+      <h2 class="section-h2">Clinically driven<br>by Alpine Thorne.</h2>
+      <p class="section-p">One comprehensive formula replaces the shelf full of supplements you've been meaning to take. Science-backed. Rigorously tested. Designed for real life.</p>
+      <ul class="benefits">
+        <li class="benefit">
+          <div class="benefit-icon">⚡</div>
+          <div class="benefit-body">
+            <strong>Energy &amp; Vitality</strong>
+            <span>B-vitamins, iron, and adaptogenic herbs work together to sustain real, clean energy without the crash.</span>
+          </div>
+        </li>
+        <li class="benefit">
+          <div class="benefit-icon">🌿</div>
+          <div class="benefit-body">
+            <strong>Gut &amp; Digestive Health</strong>
+            <span>7.2 billion CFU probiotic complex with prebiotic fiber to keep your microbiome balanced and thriving.</span>
+          </div>
+        </li>
+        <li class="benefit">
+          <div class="benefit-icon">🛡️</div>
+          <div class="benefit-body">
+            <strong>Immune Support</strong>
+            <span>Vitamins C &amp; D, zinc, and elderberry extract deliver comprehensive immune system reinforcement.</span>
+          </div>
+        </li>
+        <li class="benefit">
+          <div class="benefit-icon">🧠</div>
+          <div class="benefit-body">
+            <strong>Mental Clarity</strong>
+            <span>Ashwagandha, Rhodiola, and Lion's Mane mushroom support cognitive function and stress resilience.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="diagram">
+      <div class="diagram-heading">Full Spectrum Coverage</div>
+      <div class="body-fig">
+        <div class="body-head"></div>
+        <div class="body-torso"></div>
+        <div class="body-legs">
+          <div class="body-leg"></div>
+          <div class="body-leg"></div>
+        </div>
+      </div>
+      <div class="diagram-tags">
+        <div class="dtag"><div class="dtag-name">Brain Health</div><div class="dtag-sub">Nootropics</div></div>
+        <div class="dtag"><div class="dtag-name">Heart Health</div><div class="dtag-sub">Omega support</div></div>
+        <div class="dtag"><div class="dtag-name">Gut Flora</div><div class="dtag-sub">Pre + Probiotics</div></div>
+        <div class="dtag"><div class="dtag-name">Immunity</div><div class="dtag-sub">Vitamins + Zinc</div></div>
+        <div class="dtag"><div class="dtag-name">Recovery</div><div class="dtag-sub">Amino acids</div></div>
+        <div class="dtag"><div class="dtag-name">Energy</div><div class="dtag-sub">B-Complex</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INGREDIENTS ─────────────────────────────────────────── -->
+<section class="ingredients section-pad" id="ingredients">
+  <div class="inner">
+    <div class="eyebrow">What's Inside</div>
+    <h2 class="section-h2">75+ high-quality ingredients,<br>optimized for you.</h2>
+    <p class="section-p">Every ingredient is chosen for bioavailability, purity, and clinical evidence. No fillers, no compromises, no cutting corners.</p>
+    <div class="ing-grid">
+      <div class="ing-card">
+        <div class="ing-num">23</div>
+        <div class="ing-name">Vitamins &amp; Minerals</div>
+        <div class="ing-desc">Full-spectrum micronutrient coverage including chelated minerals for superior bioavailability and absorption.</div>
+      </div>
+      <div class="ing-card">
+        <div class="ing-num">12</div>
+        <div class="ing-name">Whole-Food Nutrients</div>
+        <div class="ing-desc">Spirulina, wheatgrass, barley grass, and chlorella — nature's most nutrient-dense superfoods concentrated.</div>
+      </div>
+      <div class="ing-card">
+        <div class="ing-num">7.2B</div>
+        <div class="ing-name">CFU Probiotics</div>
+        <div class="ing-desc">Multi-strain probiotic complex with prebiotic fiber clinically shown to support lasting microbiome balance.</div>
+      </div>
+      <div class="ing-card">
+        <div class="ing-num">8</div>
+        <div class="ing-name">Adaptogens</div>
+        <div class="ing-desc">Ashwagandha, Rhodiola, Holy Basil, and more — clinically dosed for measurable stress resilience.</div>
+      </div>
+      <div class="ing-card">
+        <div class="ing-num">5</div>
+        <div class="ing-name">Digestive Enzymes</div>
+        <div class="ing-desc">Bromelain, papain, and systemic enzymes to enhance nutrient uptake and support comfortable digestion.</div>
+      </div>
+      <div class="ing-card">
+        <div class="ing-num">6</div>
+        <div class="ing-name">Antioxidant Compounds</div>
+        <div class="ing-desc">CoQ10, alpha lipoic acid, and polyphenols combat oxidative stress at the cellular level.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SCIENCE ─────────────────────────────────────────────── -->
+<section class="science section-pad" id="science">
+  <div class="science-inner">
+    <div>
+      <div class="eyebrow">The Science</div>
+      <h2 class="section-h2">Backed by research.<br>Built to perform.</h2>
+      <p class="section-p">Alpine Thorne AG1 is formulated in partnership with leading nutritional scientists and third-party tested for purity, potency, and safety on every production run.</p>
+      <div class="sci-stats">
+        <div class="sci-stat">
+          <div class="sci-stat-num">NSF</div>
+          <div class="sci-stat-label">Certified for Sport — trusted by professional athletes worldwide</div>
+        </div>
+        <div class="sci-stat">
+          <div class="sci-stat-num">cGMP</div>
+          <div class="sci-stat-label">Manufactured in FDA-registered, cGMP-certified facilities</div>
+        </div>
+        <div class="sci-stat">
+          <div class="sci-stat-num">3rd</div>
+          <div class="sci-stat-label">Party tested for heavy metals, pathogens, and potency each batch</div>
+        </div>
+        <div class="sci-stat">
+          <div class="sci-stat-num">12+</div>
+          <div class="sci-stat-label">Years of continuous formula refinement and improvement</div>
+        </div>
+      </div>
+    </div>
+    <div class="sci-visual">
+      <div class="sci-icon">🔬</div>
+      <h3>Formulated With Experts</h3>
+      <p>Our advisory board includes nutritionists, MDs, and performance coaches who review every batch before it ships. What's on the label is exactly what's in the tub.</p>
+      <div class="sci-certs">
+        <span class="sci-cert">NSF Certified</span>
+        <span class="sci-cert">Non-GMO</span>
+        <span class="sci-cert">Gluten Free</span>
+        <span class="sci-cert">Keto Friendly</span>
+        <span class="sci-cert">Vegan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REVIEWS ─────────────────────────────────────────────── -->
+<section class="reviews section-pad" id="reviews">
+  <div class="inner">
+    <div class="eyebrow">What People Are Saying</div>
+    <div class="reviews-header-row">
+      <h2 class="section-h2" style="margin-bottom:0">Real results from real people.</h2>
+      <div class="reviews-aggregate">
+        <div class="agg-score">4.9</div>
+        <div class="agg-right">
+          <div class="agg-stars">★★★★★</div>
+          <div class="agg-count">Based on 14,200+ verified reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-title">"Nothing comes close."</div>
+        <p class="rev-body">I've tried every greens powder on the market and nothing comes close. Two months in and my energy levels are completely different. I actually wake up ready to go.</p>
+        <div class="rev-author">
+          <div class="rev-avatar">JM</div>
+          <div>
+            <div class="rev-name">Jake M.</div>
+            <div class="rev-meta">2 months ago</div>
+            <div class="rev-verified">✓ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-title">"Game changer for shift work."</div>
+        <p class="rev-body">As a nurse working 12-hour shifts, I needed something real. Alpine AG1 is the one supplement I haven't stopped taking. My digestion is better, mood steadier, sleeping deeper.</p>
+        <div class="rev-author">
+          <div class="rev-avatar">SR</div>
+          <div>
+            <div class="rev-name">Sara R.</div>
+            <div class="rev-meta">3 months ago</div>
+            <div class="rev-verified">✓ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-title">"No more 2pm crash."</div>
+        <p class="rev-body">Skeptical at first, but I had brain fog and constant afternoon crashes. After three weeks I noticed I was sharper at work and not reaching for coffee at 2pm. Sold for life.</p>
+        <div class="rev-author">
+          <div class="rev-avatar">TD</div>
+          <div>
+            <div class="rev-name">Tom D.</div>
+            <div class="rev-meta">1 month ago</div>
+            <div class="rev-verified">✓ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-title">"My doctor noticed the difference."</div>
+        <p class="rev-body">My bloodwork came back significantly improved after 90 days. My doctor asked what I changed and this was the only new thing. Hard to argue with lab results.</p>
+        <div class="rev-author">
+          <div class="rev-avatar">KL</div>
+          <div>
+            <div class="rev-name">Karen L.</div>
+            <div class="rev-meta">4 months ago</div>
+            <div class="rev-verified">✓ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-title">"Worth every penny."</div>
+        <p class="rev-body">I was spending more on individual supplements that added up to way more than this. AG1 simplified my routine and I actually feel better than I did on the stack. Wish I found this sooner.</p>
+        <div class="rev-author">
+          <div class="rev-avatar">MH</div>
+          <div>
+            <div class="rev-name">Marcus H.</div>
+            <div class="rev-meta">5 months ago</div>
+            <div class="rev-verified">✓ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-title">"Finally consistent with something."</div>
+        <p class="rev-body">I've never stuck with a supplement routine for more than a week. I've been taking Alpine AG1 for 6 months now. It actually tastes good and the difference is enough to keep me motivated.</p>
+        <div class="rev-author">
+          <div class="rev-avatar">AW</div>
+          <div>
+            <div class="rev-name">Ava W.</div>
+            <div class="rev-meta">2 weeks ago</div>
+            <div class="rev-verified">✓ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ─────────────────────────────────────────────────── -->
+<section class="cta-section" id="get-started">
+  <div class="cta-glow"></div>
+  <div class="cta-inner-wrap">
+    <div class="eyebrow">Start Your Journey</div>
+    <h2 class="section-h2">One small habit.<br>Life-changing results.</h2>
+    <p class="section-p">Join 91,000+ people who start every morning with Alpine AG1. Choose the plan that works for you.</p>
+    <div class="cta-cards">
+      <div class="cta-card featured">
+        <div class="cta-badge">Most Popular — Best Value</div>
+        <div class="cta-card-title">Subscribe &amp; Save</div>
+        <div class="cta-price">$79 <sub>/ month</sub></div>
+        <div class="cta-card-desc">Free shaker bottle + travel packets included. Save 20% vs. one-time price. Cancel anytime, no fees.</div>
+      </div>
+      <div class="cta-card">
+        <div class="cta-card-title">One-Time Purchase</div>
+        <div class="cta-price">$99 <sub>/ tub</sub></div>
+        <div class="cta-card-desc">30-day supply. Free shipping on orders over $75. No commitment required. Try it risk-free.</div>
+      </div>
+    </div>
+    <a href="#" class="cta-main-btn">Get Alpine AG1 →</a>
+    <div class="cta-guarantee">
+      <span>60-Day Money-Back Guarantee</span>
+      <span>Free Shipping</span>
+      <span>Cancel Anytime</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="brand_assets/Alpine Logo Transparent copy.png" alt="Alpine Thorne" class="footer-brand-logo">
+        <p>Daily performance nutrition engineered for the way you actually live. One scoop. Total body support. Every day.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#">Alpine AG1</a></li>
+          <li><a href="#ingredients">Ingredients</a></li>
+          <li><a href="#science">The Science</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Mission</a></li>
+          <li><a href="#">Partnerships</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-legal">© 2026 Alpine Thorne™. All rights reserved.</span>
+      <div class="footer-legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
