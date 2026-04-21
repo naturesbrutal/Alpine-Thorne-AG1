@@ -514,7 +514,7 @@
     .ic {
       position: relative;
       display: flex; flex-direction: column; justify-content: space-between;
-      width: 360px; height: 520px; flex: 0 0 360px;
+      width: 380px; height: 540px; flex: 0 0 380px;
       border-radius: 16px;
       box-shadow: 0 18px 48px 0 rgba(0,0,0,.12);
       overflow: hidden;
@@ -531,18 +531,22 @@
       width: 100%; height: 100%;
       object-fit: cover; object-position: center;
       z-index: 0;
+      -webkit-user-drag: none;
+      user-drag: none;
+      pointer-events: none;
     }
 
-    /* Overlay — transparent top, strong fade to dark at bottom */
+    /* Overlay — semi-transparent Deep Navy, image visible through bottom */
     .ic-overlay {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       z-index: 1;
       background: linear-gradient(180deg,
-        rgba(10,22,40,0) 0%,
-        rgba(10,22,40,0) 45%,
-        rgba(10,22,40,.55) 62%,
-        rgba(10,22,40,.92) 72%,
-        rgba(10,22,40,1) 78%
+        rgba(0,0,0,.28)     0%,
+        rgba(0,0,0,.05)     18%,
+        rgba(10,22,40,0)    30%,
+        rgba(10,22,40,.38)  52%,
+        rgba(10,22,40,.72)  68%,
+        rgba(10,22,40,.84)  100%
       );
       pointer-events: none;
     }
@@ -550,23 +554,25 @@
     /* Top flex child — sits above overlay */
     .ic-top { position: relative; z-index: 2; padding: 16px; }
     .ic-label {
-      font-size: 10px; font-weight: 600;
-      letter-spacing: .12em; text-transform: uppercase;
-      color: rgba(10,22,40,.55); line-height: 1;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,255,255,.95); line-height: 1;
+      text-shadow: 0 1px 8px rgba(0,0,0,.45);
     }
 
-    /* Bottom flex child — SOLID background creates dark text panel */
+    /* Bottom flex child — transparent, sits over semi-transparent overlay */
     .ic-bottom {
       position: relative; z-index: 2;
-      background: #0A1628;
-      padding: 16px 18px 20px;
+      background: transparent;
+      padding: 16px 18px 22px;
     }
     .ic-category {
-      font-size: 24px; font-weight: 700;
-      color: #fff; line-height: 1.2;
-      letter-spacing: -.01em; margin-bottom: 6px;
+      font-size: 30px; font-weight: 800;
+      color: #fff; line-height: 1.1;
+      letter-spacing: -.02em; margin-bottom: 8px;
+      text-shadow: 0 2px 10px rgba(10,22,40,.5);
     }
-    .ic-desc { font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.5; }
+    .ic-desc { font-size: 14px; color: var(--glacier); line-height: 1.6; }
 
     /* Emoji for no-photo cards — floats in the middle of the card */
     .ic-emoji {
@@ -580,13 +586,16 @@
       z-index: 0;
     }
 
+    /* Magnesium — light bg to match crystal's natural color */
+    .ic-mag { background: #d4d4d4; }
+
     /* Theme backgrounds for no-photo cards — brand blue tints fade to Deep Navy */
-    .ic-theme-amber { background: linear-gradient(180deg,#EBF4FF 0%,rgba(123,191,255,.25) 45%,#0A1628 100%); }
-    .ic-theme-sage  { background: linear-gradient(180deg,#EBF4FF 0%,rgba(59,158,255,.15) 45%,#0A1628 100%); }
-    .ic-theme-steel { background: linear-gradient(180deg,#E8F0FA 0%,rgba(30,58,95,.3) 45%,#0A1628 100%); }
-    .ic-theme-ocean { background: linear-gradient(180deg,#EBF4FF 0%,rgba(123,191,255,.3) 45%,#0A1628 100%); }
-    .ic-theme-gold  { background: linear-gradient(180deg,#EBF4FF 0%,rgba(59,158,255,.2) 45%,#0A1628 100%); }
-    .ic-theme-plum  { background: linear-gradient(180deg,#EEF2FF 0%,rgba(26,108,196,.2) 45%,#0A1628 100%); }
+    .ic-theme-amber { background: linear-gradient(180deg,#EBF4FF 0%,rgba(123,191,255,.25) 45%,rgba(10,22,40,.9) 100%); }
+    .ic-theme-sage  { background: linear-gradient(180deg,#EBF4FF 0%,rgba(59,158,255,.15) 45%,rgba(10,22,40,.9) 100%); }
+    .ic-theme-steel { background: linear-gradient(180deg,#E8F0FA 0%,rgba(30,58,95,.3) 45%,rgba(10,22,40,.9) 100%); }
+    .ic-theme-ocean { background: linear-gradient(180deg,#EBF4FF 0%,rgba(123,191,255,.3) 45%,rgba(10,22,40,.9) 100%); }
+    .ic-theme-gold  { background: linear-gradient(180deg,#EBF4FF 0%,rgba(59,158,255,.2) 45%,rgba(10,22,40,.9) 100%); }
+    .ic-theme-plum  { background: linear-gradient(180deg,#EEF2FF 0%,rgba(26,108,196,.2) 45%,rgba(10,22,40,.9) 100%); }
     /* ── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 1024px) {
       .problem-grid { grid-template-columns: repeat(2, 1fr); }
@@ -639,7 +648,7 @@
         Recovery that works<br>while <em>you sleep.</em>
       </h1>
       <p class="hero-sub">
-        17 clinically-dosed ingredients that replenish electrolytes, support liver detox, and restore your body — so you wake up feeling human again.
+        15 clinically-dosed ingredients that replenish electrolytes, support liver detox, and restore your body — so you wake up feeling human again.
       </p>
       <div class="hero-price-row">
         <div class="hero-price">$21.99</div>
@@ -662,7 +671,7 @@
     <div class="hero-visual">
       <div class="product-img-wrap">
         <img src="alpine-mockup.png" alt="Alpine Reset — Hangover Defense, Peach Mango">
-        <div class="product-float-badge">17 Clinically-Dosed Ingredients</div>
+        <div class="product-float-badge">15 Clinically-Dosed Ingredients</div>
         <div class="product-float-flavor">🍑 Peach Mango</div>
       </div>
     </div>
@@ -678,7 +687,7 @@
     </div>
     <div class="proof-sep"></div>
     <div class="proof-item">
-      <div class="proof-num"><span>17</span></div>
+      <div class="proof-num"><span>15</span></div>
       <div class="proof-label">Clinically-dosed ingredients</div>
     </div>
     <div class="proof-sep"></div>
@@ -699,7 +708,7 @@
   <div class="carousel-header-row">
     <div>
       <div class="eyebrow">What's Inside</div>
-      <h2>17 Ingredients in <em>1 Powerful Formula</em></h2>
+      <h2>15 Ingredients in <em>1 Powerful Formula</em></h2>
       <p>Every compound clinically dosed. Every mechanism targeted. Scroll to explore what makes Alpine Reset different.</p>
     </div>
   </div>
@@ -709,8 +718,8 @@
 
       <!-- 1. DHM -->
       <div class="ic ic-theme-amber">
+        <img class="ic-img" src="ingredients/DHM%20.png" alt="DHM">
         <div class="ic-overlay"></div>
-        <div class="ic-emoji">🌿</div>
         <div class="ic-top"><span class="ic-label">Dihydromyricetin</span></div>
         <div class="ic-bottom">
           <div class="ic-category">Alcohol Clearance</div>
@@ -718,9 +727,20 @@
         </div>
       </div>
 
+      <!-- 4. NAC -->
+      <div class="ic ic-theme-steel">
+        <img class="ic-img" src="ingredients/NAC%20new.png" alt="NAC">
+        <div class="ic-overlay"></div>
+        <div class="ic-top"><span class="ic-label">N-Acetyl Cysteine</span></div>
+        <div class="ic-bottom">
+          <div class="ic-category">Glutathione Synthesis</div>
+          <div class="ic-desc">Direct precursor to glutathione — your liver's master antioxidant, severely depleted by alcohol metabolism.</div>
+        </div>
+      </div>
+
       <!-- 2. Prickly Pear -->
       <div class="ic">
-        <img class="ic-img" src="ingredients/prickly-pear.jpg" alt="Prickly Pear">
+        <img class="ic-img" src="ingredients/prickly%20pear.png" alt="Prickly Pear">
         <div class="ic-overlay"></div>
         <div class="ic-top"><span class="ic-label">Prickly Pear Extract</span></div>
         <div class="ic-bottom">
@@ -731,8 +751,8 @@
 
       <!-- 3. Milk Thistle -->
       <div class="ic ic-theme-sage">
+        <img class="ic-img" src="ingredients/milk%20thistle%20new.png" alt="Milk Thistle">
         <div class="ic-overlay"></div>
-        <div class="ic-emoji">🌸</div>
         <div class="ic-top"><span class="ic-label">Milk Thistle Extract</span></div>
         <div class="ic-bottom">
           <div class="ic-category">Liver Protection</div>
@@ -740,42 +760,9 @@
         </div>
       </div>
 
-      <!-- 4. NAC -->
-      <div class="ic ic-theme-steel">
-        <div class="ic-overlay"></div>
-        <div class="ic-emoji">⚗️</div>
-        <div class="ic-top"><span class="ic-label">N-Acetyl Cysteine</span></div>
-        <div class="ic-bottom">
-          <div class="ic-category">Glutathione Synthesis</div>
-          <div class="ic-desc">Direct precursor to glutathione — your liver's master antioxidant, severely depleted by alcohol metabolism.</div>
-        </div>
-      </div>
-
-      <!-- 5. Taurine -->
-      <div class="ic">
-        <img class="ic-img" src="ingredients/taurine.jpg" alt="Taurine">
-        <div class="ic-overlay"></div>
-        <div class="ic-top"><span class="ic-label">Taurine</span></div>
-        <div class="ic-bottom">
-          <div class="ic-category">Cellular Protection</div>
-          <div class="ic-desc">Reduces oxidative liver damage, supports bile acid conjugation, and restores intracellular electrolyte balance.</div>
-        </div>
-      </div>
-
-      <!-- 6. L-Carnitine -->
-      <div class="ic">
-        <img class="ic-img" src="ingredients/l-carnitine.jpg" alt="L-Carnitine">
-        <div class="ic-overlay"></div>
-        <div class="ic-top"><span class="ic-label">L-Carnitine</span></div>
-        <div class="ic-bottom">
-          <div class="ic-category">Energy Recovery</div>
-          <div class="ic-desc">Shuttles fatty acids into mitochondria for ATP production — rebuilding the cellular energy alcohol tears down.</div>
-        </div>
-      </div>
-
       <!-- 7. R-ALA -->
       <div class="ic">
-        <img class="ic-img" src="ingredients/r-ala.webp" alt="R-Alpha Lipoic Acid">
+        <img class="ic-img" src="ingredients/R-Ala.png" alt="R-Alpha Lipoic Acid">
         <div class="ic-overlay"></div>
         <div class="ic-top"><span class="ic-label">R-Alpha Lipoic Acid</span></div>
         <div class="ic-bottom">
@@ -786,8 +773,8 @@
 
       <!-- 8. L-Theanine -->
       <div class="ic ic-theme-plum">
+        <img class="ic-img" src="ingredients/L-Theanine.png" alt="L-Theanine">
         <div class="ic-overlay"></div>
-        <div class="ic-emoji">🍃</div>
         <div class="ic-top"><span class="ic-label">L-Theanine</span></div>
         <div class="ic-bottom">
           <div class="ic-category">Mental Clarity</div>
@@ -795,20 +782,9 @@
         </div>
       </div>
 
-      <!-- 9. Magnesium -->
-      <div class="ic">
-        <img class="ic-img" src="ingredients/magnesium.png" alt="Magnesium">
-        <div class="ic-overlay"></div>
-        <div class="ic-top"><span class="ic-label">Magnesium</span></div>
-        <div class="ic-bottom">
-          <div class="ic-category">Deep Recovery</div>
-          <div class="ic-desc">Alcohol's diuretic effect strips magnesium rapidly — critical for muscle relaxation, quality sleep, and mood stability.</div>
-        </div>
-      </div>
-
       <!-- 10. Niacinamide -->
       <div class="ic">
-        <img class="ic-img" src="ingredients/niacinamide.webp" alt="Niacinamide">
+        <img class="ic-img" src="ingredients/Niacinamide.png" alt="Niacinamide">
         <div class="ic-overlay"></div>
         <div class="ic-top"><span class="ic-label">Niacinamide (B3)</span></div>
         <div class="ic-bottom">
@@ -817,20 +793,20 @@
         </div>
       </div>
 
-      <!-- 11. Beta-Alanine -->
-      <div class="ic">
-        <img class="ic-img" src="ingredients/beta-alanine.png" alt="Beta-Alanine">
+      <!-- 9. Magnesium -->
+      <div class="ic ic-mag">
+        <img class="ic-img" src="ingredients/magnesium%20white.png" alt="Magnesium" style="object-position: center 35%;">
         <div class="ic-overlay"></div>
-        <div class="ic-top"><span class="ic-label">Beta-Alanine</span></div>
+        <div class="ic-top"><span class="ic-label">Magnesium</span></div>
         <div class="ic-bottom">
-          <div class="ic-category">Physical Recovery</div>
-          <div class="ic-desc">Boosts muscle carnosine to buffer lactic acid, reduce soreness, and restore physical resilience after a long night.</div>
+          <div class="ic-category">Deep Recovery</div>
+          <div class="ic-desc">Alcohol's diuretic effect strips magnesium rapidly — critical for muscle relaxation, quality sleep, and mood stability.</div>
         </div>
       </div>
 
       <!-- 12. CoQ10 -->
       <div class="ic">
-        <img class="ic-img" src="ingredients/coq10.webp" alt="CoQ10">
+        <img class="ic-img" src="ingredients/coq10 fin.png" alt="CoQ10">
         <div class="ic-overlay"></div>
         <div class="ic-top"><span class="ic-label">Coenzyme Q10</span></div>
         <div class="ic-bottom">
@@ -839,9 +815,20 @@
         </div>
       </div>
 
+      <!-- Taurine -->
+      <div class="ic">
+        <img class="ic-img" src="ingredients/taurine%20white.png" alt="Taurine">
+        <div class="ic-overlay"></div>
+        <div class="ic-top"><span class="ic-label">Taurine</span></div>
+        <div class="ic-bottom">
+          <div class="ic-category">Cellular Protection</div>
+          <div class="ic-desc">Reduces oxidative liver damage, supports bile acid conjugation, and restores intracellular electrolyte balance.</div>
+        </div>
+      </div>
+
       <!-- 13. Astaxanthin -->
       <div class="ic">
-        <img class="ic-img" src="ingredients/astaxanthin.webp" alt="Astaxanthin">
+        <img class="ic-img" src="ingredients/asta.png" alt="Astaxanthin">
         <div class="ic-overlay"></div>
         <div class="ic-top"><span class="ic-label">Astaxanthin</span></div>
         <div class="ic-bottom">
@@ -852,7 +839,7 @@
 
       <!-- 14. Copper -->
       <div class="ic">
-        <img class="ic-img" src="ingredients/copper.webp" alt="Copper">
+        <img class="ic-img" src="ingredients/copper.png" alt="Copper">
         <div class="ic-overlay"></div>
         <div class="ic-top"><span class="ic-label">Copper</span></div>
         <div class="ic-bottom">
@@ -863,8 +850,8 @@
 
       <!-- 15. B Vitamins -->
       <div class="ic ic-theme-gold">
+        <img class="ic-img" src="ingredients/vitamin%20b.png" alt="B Vitamin Complex">
         <div class="ic-overlay"></div>
-        <div class="ic-emoji">✨</div>
         <div class="ic-top"><span class="ic-label">B Vitamin Complex</span></div>
         <div class="ic-bottom">
           <div class="ic-category">Energy Metabolism</div>
@@ -872,10 +859,21 @@
         </div>
       </div>
 
-      <!-- 16. Electrolytes -->
-      <div class="ic ic-theme-ocean">
+      <!-- L-Carnitine -->
+      <div class="ic">
+        <img class="ic-img" src="ingredients/L-carnitine.png" alt="L-Carnitine">
         <div class="ic-overlay"></div>
-        <div class="ic-emoji">💧</div>
+        <div class="ic-top"><span class="ic-label">L-Carnitine</span></div>
+        <div class="ic-bottom">
+          <div class="ic-category">Energy Recovery</div>
+          <div class="ic-desc">Shuttles fatty acids into mitochondria for ATP production — rebuilding the cellular energy alcohol tears down.</div>
+        </div>
+      </div>
+
+      <!-- 16. Electrolytes -->
+      <div class="ic">
+        <img class="ic-img" src="ingredients/electrolyte.png" alt="Electrolyte Complex">
+        <div class="ic-overlay"></div>
         <div class="ic-top"><span class="ic-label">Electrolyte Complex</span></div>
         <div class="ic-bottom">
           <div class="ic-category">Rapid Hydration</div>
@@ -883,16 +881,6 @@
         </div>
       </div>
 
-      <!-- 17. Alpine Reset (product card) -->
-      <div class="ic" style="background: linear-gradient(180deg,#EBF4FF 0%,rgba(59,158,255,.15) 40%,#0A1628 100%);">
-        <img src="alpine-mockup.png" alt="Alpine Reset" style="position:absolute; inset:0 0 130px 0; width:100%; object-fit:contain; object-position:center; z-index:0; padding:20px; box-sizing:border-box;">
-        <div class="ic-overlay"></div>
-        <div class="ic-top"><span class="ic-label">Alpine Reset</span></div>
-        <div class="ic-bottom">
-          <div class="ic-category">The Complete Formula</div>
-          <div class="ic-desc">All 17 ingredients. One scoop. Peach Mango flavor. Take before bed — wake up human.</div>
-        </div>
-      </div>
 
     </div><!-- /carousel-track -->
   </div><!-- /carousel-track-wrap -->
@@ -903,26 +891,39 @@
     const wrap  = document.getElementById('carousel-track-wrap');
     const track = document.getElementById('carousel-track');
 
-    // Clone cards for seamless infinite loop
-    [...track.children].forEach(card => track.appendChild(card.cloneNode(true)));
+    // Build [clones-before][originals][clones-after] for infinite scroll in both directions
+    const originals = [...track.children];
+    // Prepend clones before originals
+    originals.slice().reverse().forEach(card => {
+      track.insertBefore(card.cloneNode(true), track.firstChild);
+    });
+    // Append clones after originals
+    originals.forEach(card => track.appendChild(card.cloneNode(true)));
 
-    const SPEED = 1.2; // px per frame (~72px/s at 60fps)
-    let isDragging = false;
+    // Start scrollLeft at the middle set (skip over the prepended clones)
+    requestAnimationFrame(() => {
+      wrap.scrollLeft = track.scrollWidth / 3;
+    });
+
+    const SPEED = 0.5; // px per frame
+    let isHovered   = false;
+    let isDragging  = false;
     let dragStartX  = 0;
     let dragScrollStart = 0;
 
-    function halfWidth() { return track.scrollWidth / 2; }
+    wrap.addEventListener('mouseenter', () => { isHovered = true;  });
+    wrap.addEventListener('mouseleave', () => { isHovered = false; });
 
-    // Wrap scrollLeft so it stays in [0, halfWidth)
+    // Keep scrollLeft in the middle third so both directions have room
     function normalise() {
-      const hw = halfWidth();
-      if (wrap.scrollLeft >= hw) wrap.scrollLeft -= hw;
-      if (wrap.scrollLeft <  0)  wrap.scrollLeft += hw;
+      const oneSet = track.scrollWidth / 3;
+      if (wrap.scrollLeft >= 2 * oneSet) wrap.scrollLeft -= oneSet;
+      if (wrap.scrollLeft <      oneSet) wrap.scrollLeft += oneSet;
     }
 
     // Auto-scroll loop
     (function tick() {
-      if (!isDragging) {
+      if (!isDragging && !isHovered) {
         wrap.scrollLeft += SPEED;
         normalise();
       }
@@ -931,8 +932,8 @@
 
     // ── Mouse drag ──────────────────────────────────────
     wrap.addEventListener('mousedown', e => {
-      isDragging    = true;
-      dragStartX    = e.pageX;
+      isDragging      = true;
+      dragStartX      = e.pageX;
       dragScrollStart = wrap.scrollLeft;
       wrap.style.cursor = 'grabbing';
     });
@@ -1064,7 +1065,7 @@
           <div class="tstep-dot">2</div>
           <div class="tstep-content">
             <div class="tstep-label">Works while you sleep</div>
-            <div class="tstep-sub">17 ingredients begin clearing acetaldehyde, restoring electrolytes, and protecting your liver overnight.</div>
+            <div class="tstep-sub">15 ingredients begin clearing acetaldehyde, restoring electrolytes, and protecting your liver overnight.</div>
           </div>
         </div>
         <div class="tstep">
@@ -1084,12 +1085,12 @@
   <div class="inner">
     <div class="ing-header-row">
       <div>
-        <div class="eyebrow">17 Ingredients in 1 Powerful Formula</div>
+        <div class="eyebrow">15 Ingredients in 1 Powerful Formula</div>
         <h2 class="section-h2" style="margin-bottom:12px">Every ingredient.<br>Every dose. Shown.</h2>
         <p class="section-p">No proprietary blends. No hidden doses. Every ingredient is listed with its exact clinical amount — because you deserve to know what you're putting in your body.</p>
       </div>
       <div class="ing-count-badge">
-        <span>17</span> Clinically-Dosed<br>Ingredients
+        <span>15</span> Clinically-Dosed<br>Ingredients
       </div>
     </div>
     <div class="ing-grid">
@@ -1237,7 +1238,7 @@
           <div class="sci-stat-label">Artificial sweeteners, colors, or flavors — naturally flavored only</div>
         </div>
         <div class="sci-stat">
-          <div class="sci-stat-num">17</div>
+          <div class="sci-stat-num">15</div>
           <div class="sci-stat-label">Ingredients shown at their exact clinical dose — total transparency</div>
         </div>
       </div>
@@ -1276,7 +1277,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q">Is it safe to use regularly?</div>
-        <div class="faq-a">Yes. All 17 ingredients are well-tolerated at the doses used and are safe for regular use. The formula contains no stimulants, no habit-forming compounds, and no artificial additives.</div>
+        <div class="faq-a">Yes. All 15 ingredients are well-tolerated at the doses used and are safe for regular use. The formula contains no stimulants, no habit-forming compounds, and no artificial additives.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">What does it taste like?</div>
