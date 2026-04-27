@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Alpine Nutrition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #3B9EFF;
+      --bg: #0A1628;
+      --surface: #0D1E3A;
+      --input-bg: #0D1E3A;
+      --input-border: #1E3A5F;
+      --border: rgba(255,255,255,0.07);
+      --gray-1: #8FA8C0;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 500px;
+      background: radial-gradient(ellipse, rgba(59,158,255,0.13) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body {
+      background: #070F1C;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .page-bg {
+      background: linear-gradient(140deg, #0A1628 0%, #0D1E3A 50%, #1E3A5F 100%);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,22,40,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(59,158,255,0.1);
+      padding: 0 6%;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo { display: flex; align-items: center; height: 66px; width: auto; filter: brightness(0) invert(1); }
+
+    .nav-back {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #fff; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: transparent;
+      padding: 60px 6% 48px;
+    }
+
+    .page-hero-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900;
+      line-height: 0.97;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .page-hero-meta { font-size: 13px; color: var(--gray-1); }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 16px 6% 100px;
+    }
+
+    /* ── FORM ── */
+    .contact-form { display: flex; flex-direction: column; gap: 18px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+    .form-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 6px;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 400;
+      padding: 13px 16px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: rgba(255,255,255,0.28); }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(59,158,255,0.12);
+    }
+
+    .form-select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238FA8C0' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 44px;
+    }
+
+    .form-select option {
+      background: #0D1E3A;
+      color: #fff;
+    }
+
+    .form-textarea {
+      min-height: 140px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--blue);
+      color: #fff;
+      font-family: 'Satoshi', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 16px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      margin-top: 4px;
+    }
+
+    .btn-submit:hover {
+      background: #5aaeff;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(59,158,255,0.30);
+    }
+
+    .btn-submit:active { transform: translateY(0); }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 10, 22, 0.75);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .modal-overlay.visible { display: flex; }
+
+    .modal {
+      background: #0D1E3A;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 48px 40px 40px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(255,255,255,0.5);
+      font-size: 20px;
+      line-height: 1;
+      padding: 0;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: #fff; }
+
+    .modal-icon {
+      width: 56px; height: 56px;
+      background: rgba(59,158,255,0.12);
+      border: 1.5px solid rgba(59,158,255,0.35);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+    }
+
+    .modal-icon svg { width: 26px; height: 26px; }
+
+    .modal-headline {
+      font-family: var(--font-body);
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .modal-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.60);
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 32px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .page-footer-copy { font-size: 13px; color: var(--gray-1); }
+
+    .page-footer a {
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .page-hero { padding: 40px 5% 32px; }
+      .page-wrap { padding: 16px 5% 72px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-bg" id="page-bg">
+
+  <nav class="nav">
+    <a href="index.html"><img src="alpine trans no TM.png" alt="Alpine Nutrition" class="nav-logo" /></a>
+    <a href="index.html" class="nav-back">← Back to Site</a>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-label">Legal</div>
+    <h1>Contact Us</h1>
+    <div class="page-hero-meta">Please fill out the contact form below or email us directly at <a href="mailto:support@alpinenu.com" style="color:#3B9EFF;text-decoration:none;">support@alpinenu.com</a></div>
+  </div>
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <button class="modal-close" id="modal-close" aria-label="Close">&#x2715;</button>
+      <div class="modal-icon">
+        <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 13.5L10.5 19L21 8" stroke="#3B9EFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="modal-headline">Message Sent Successfully!</div>
+      <div class="modal-sub">Thanks for contacting us. We'll get back to you as soon as possible.</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <form
+      class="contact-form"
+      id="contact-form"
+      action="https://formspree.io/f/xkokpoow"
+      method="POST"
+    >
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="first-name">First Name</label>
+          <input class="form-input" type="text" id="first-name" name="first_name" placeholder="Enter your first name" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="last-name">Last Name</label>
+          <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Enter your last name" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">Email Address</label>
+        <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="topic">How Can We Help?</label>
+        <select class="form-select" id="topic" name="topic" required>
+          <option value="" disabled selected>Select a topic</option>
+          <option value="Product Questions">Product Questions</option>
+          <option value="Product Suggestions">Product Suggestions</option>
+          <option value="Orders / Shipping">Orders / Shipping</option>
+          <option value="Refund Request">Refund Request</option>
+          <option value="Brand / PR">Brand / PR</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="subject">Subject</label>
+        <input class="form-input" type="text" id="subject" name="subject" placeholder="Brief description of your inquiry" required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="message">Your Message</label>
+        <textarea class="form-textarea" id="message" name="message" placeholder="Tell us more..." required></textarea>
+      </div>
+
+      <button class="btn-submit" type="submit" id="submit-btn">Send Message</button>
+
+    </form>
+
+  </div>
+
+  <footer class="page-footer">
+    <span class="page-footer-copy">&copy; 2026 Alpine Nutrition LLC. All rights reserved.</span>
+    <a href="index.html">← Back to Alpine Reset</a>
+  </footer>
+
+</div><!-- /.page-bg -->
+
+  <script>
+    const form    = document.getElementById('contact-form');
+    const btn     = document.getElementById('submit-btn');
+    const overlay = document.getElementById('modal-overlay');
+    const closeBtn = document.getElementById('modal-close');
+
+    function openModal() { overlay.classList.add('visible'); }
+
+    function closeModal() {
+      overlay.classList.remove('visible');
+      form.reset();
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          openModal();
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Send Message';
+          alert('Something went wrong. Please email us directly at support@alpinenu.com');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+        alert('Something went wrong. Please email us directly at support@alpinenu.com');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Alpine Nutrition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #3B9EFF;
+      --bg: #0A1628;
+      --surface: #0D1E3A;
+      --border: rgba(255,255,255,0.07);
+      --gray-1: #8FA8C0;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+
+      --footer-bg: #0A1628;
+      --footer-border: #1E3A5F;
+      --footer-heading: #FFFFFF;
+      --footer-body: #A8C4E0;
+      --footer-link: #A8C4E0;
+      --footer-link-hover: #FFFFFF;
+      --footer-social: #A8C4E0;
+      --footer-social-hover: #FFFFFF;
+      --footer-social-active: #3B9EFF;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body::before {
+      content: '';
+      position: fixed;
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 500px;
+      background: radial-gradient(ellipse, rgba(59,158,255,0.13) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body {
+      background: linear-gradient(140deg, #0A1628 0%, #0D1E3A 50%, #1E3A5F 100%);
+      min-height: 100vh;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,22,40,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(59,158,255,0.1);
+      padding: 0 6%;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo { display: flex; align-items: center; height: 66px; width: auto; filter: brightness(0) invert(1); }
+
+    .nav-back {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #fff; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: transparent;
+      padding: 60px 6% 48px;
+    }
+
+    .page-hero-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900;
+      line-height: 0.97;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    /* ── FOUNDERS SECTION ── */
+    .founders-section {
+      padding: 72px 6% 100px;
+    }
+
+    .founders-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .founders-heading {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1;
+      margin-bottom: 72px;
+    }
+
+    .founders-accent { color: var(--blue); }
+
+    .founders-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .founder-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .founder-photo {
+      width: 148px;
+      height: 148px;
+      border-radius: 50%;
+      border: 2px solid rgba(59,158,255,0.30);
+      object-fit: cover;
+      margin-bottom: 20px;
+      background: var(--surface);
+    }
+
+    .founder-sig {
+      display: block;
+      width: auto;
+      height: 56px;
+      margin: 0 auto 12px;
+    }
+    .founder-sig-img {
+      filter: brightness(0) invert(1);
+    }
+
+    .founder-name {
+      font-family: var(--font-body);
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+      line-height: 1.2;
+      width: 100%;
+      text-align: center;
+    }
+
+    .founder-title {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--gray-1);
+      margin-bottom: 20px;
+      line-height: 1.4;
+      width: 100%;
+      text-align: center;
+    }
+
+    .founder-quote {
+      font-size: 14px;
+      font-style: italic;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.8;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--footer-bg);
+      border-top: 1px solid var(--footer-border);
+      padding: 80px 6% 40px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+    .footer-logo {
+      height: 90px; width: auto;
+      filter: brightness(0) invert(1);
+      margin-bottom: 20px; display: block;
+    }
+    .footer-tagline {
+      font-size: 14px; font-weight: 400;
+      line-height: 1.75; color: var(--footer-body); max-width: 280px;
+    }
+    .footer-col-title {
+      font-family: var(--font-display);
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--footer-heading); margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a {
+      color: var(--footer-link); font-weight: 400;
+      text-decoration: none; font-size: 14px;
+      transition: color 0.2s ease, transform 0.15s ease;
+      display: inline-block;
+    }
+    .footer-links a:hover { color: var(--footer-link-hover); transform: translateX(2px); }
+    .footer-email-wrap {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      max-width: 280px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--footer-border);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .footer-email-wrap:focus-within { border-color: #3B9EFF; }
+    .footer-email-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      padding: 11px 14px;
+    }
+    .footer-email-input::placeholder { color: rgba(255,255,255,0.35); }
+    .footer-email-btn {
+      background: none;
+      border: none;
+      border-left: 1px solid var(--footer-border);
+      cursor: pointer;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 42px;
+      color: var(--footer-body);
+      transition: color 0.2s;
+    }
+    .footer-email-btn:hover { color: #fff; }
+    .footer-email-btn svg { width: 16px; height: 16px; }
+    .footer-social { display: flex; gap: 16px; margin-top: 20px; align-items: center; }
+    .footer-social a {
+      display: flex; align-items: center; justify-content: center;
+      color: var(--footer-social);
+      transition: color 0.2s ease, transform 0.15s ease; line-height: 1;
+    }
+    .footer-social a:hover { color: var(--footer-social-hover); transform: translateY(-2px); }
+    .footer-social a:active { color: var(--footer-social-active); transform: translateY(0); }
+    .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
+    .footer-bottom {
+      border-top: 1px solid var(--footer-border);
+      padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; flex-wrap: wrap;
+      font-size: 12px; color: var(--footer-body); letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 700px) {
+      .page-hero { padding: 40px 5% 32px; }
+      .founders-section { padding: 48px 5% 72px; }
+      .founders-grid { grid-template-columns: 1fr; gap: 56px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .footer { padding: 56px 5% 32px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html"><img src="alpine trans no TM.png" alt="Alpine Nutrition" class="nav-logo" /></a>
+    <a href="index.html" class="nav-back">← Back to Site</a>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-label">Our Story</div>
+    <h1>About Us</h1>
+  </div>
+
+  <section class="founders-section">
+    <div class="founders-wrap">
+
+      <div class="founders-heading">
+        Meet the <span class="founders-accent">Founders</span>
+      </div>
+
+      <div class="founders-grid">
+
+        <div class="founder-card">
+          <img src="clav.jpeg" alt="Charlie Kaludis" class="founder-photo" />
+          <img src="Signature.png" alt="Charlie Kaludis signature" class="founder-sig founder-sig-img" />
+          <div class="founder-name">Charlie Kaludis</div>
+          <div class="founder-title">Co-Founder</div>
+          <p class="founder-quote">"We were tired of choosing between a good night and a good morning."</p>
+        </div>
+
+        <div class="founder-card">
+          <img src="cookie.jpeg" alt="Hudson Haley" class="founder-photo" />
+          <svg class="founder-sig" viewBox="0 0 120 56" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 8,8 C 8,13 7,28 8,40 M 8,24 C 12,22 16,24 20,23 M 20,8 C 20,13 19,28 20,40 C 22,32 24,32 24,40 C 26,32 28,32 28,40 C 28,10 32,10 34,40 C 34,47 37,50 40,46 C 43,42 40,35 44,32 C 48,29 54,37 56,34 C 58,31 61,42 64,40"/>
+              <path d="M 71,10 C 71,15 70,30 71,42 M 71,26 C 75,24 79,26 79,25 M 79,10 C 79,15 78,30 79,42 C 81,34 85,32 87,38 C 89,44 87,47 85,46 C 83,45 82,43 85,42 C 88,41 91,36 93,40 C 95,44 95,40 97,37 C 99,34 101,41 104,40 C 106,39 106,52 103,56"/>
+            </g>
+          </svg>
+          <div class="founder-name">Hudson Haley</div>
+          <div class="founder-title">Co-Founder</div>
+          <p class="founder-quote">"Recovery is part of training. We built the product we wished existed."</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <img src="alpine trans no TM.png" alt="Alpine Nutrition" class="footer-logo" />
+        <p class="footer-tagline">Clinically-dosed hangover defense engineered to work while you sleep. Have the night. Keep the morning.</p>
+        <div class="footer-email-wrap">
+          <input class="footer-email-input" type="email" placeholder="Your email." aria-label="Email address" />
+          <button class="footer-email-btn" type="button" aria-label="Subscribe">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="footer-social">
+          <a href="https://instagram.com/alpine.supplements" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://x.com/alpinesupps" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.745l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://tiktok.com/@alpinenutrition" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.52V6.76a4.85 4.85 0 01-1.03-.07z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Product</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Alpine Reset</a></li>
+          <li><a href="index.html#ingredients">Ingredients</a></li>
+          <li><a href="index.html#science">The Science</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Our Mission</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Affiliates</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <ul class="footer-links">
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="refund.html">Refund Policy</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Alpine Nutrition™. All rights reserved.</span>
+      <span>These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.</span>
+    </div>
+  </footer>
+
+</body>
+</html>
